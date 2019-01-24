@@ -1,0 +1,118 @@
+\section{Introduction}
+
+- What is the problem?
+- Why is it important?
+- Why is it hard?
+- How are current solutions insufficient?
+- What we do
+
+The US higher education system is unique in the world in the extent to
+which it obliges undergraduates to explore a variety of courses before
+committing to a field of study. In contrast with virtually all other
+national postsecondary systems, in which students enter schools and
+programs with relatively structured curriculums, US undergraduates are
+encouraged to explore a variety of academic options through an
+iterative course search and selection process.
+
+
+This exploration is fateful. It can stall timely progress toward
+graduation \cite{bailey2015redesigning}, create path dependencies that
+neither students nor faculty fully understand
+\cite{chambliss2014college}, and reinforce inequality when academic
+pathways parallel other dimensions of demographic difference among
+students \cite{armstrong2013paying}. Ethnographic research suggests
+that students tend to select courses based on partial, poorly
+integrated information, in light of logistical constraints, and
+personal preferences that have little directly to do with academics
+\cite{nathan2006my,rosenbaum2011complexities, rosenbaum2007after}.
+
+Yet, understanding the totality of curriculum options is challenging
+not only for students. Other stake holders in the enterprise of higher
+education also need convenient insight into the
+curriculum. Instructors, department chairs, deans, provosts, and
+even Boards of Trustees cannot easily gain curriculum related
+insights. One challenge in mitigating this lack is that each of these
+potential beneficiaries of improvement require investigative equipment
+of different focal lengths. 
+
+Day to day, {\bf academic advisors} on the ground lack tools for
+understanding the characteristics of the numerous majors and programs
+they are tasked to explain. For example, it is not trivial to identify
+majors whose requirements have students take courses primarily within
+one department. Requirement structures for majors such as Computer
+Science tend to impose this more intradepartmental regime. Other
+majors, such as History, instead have students consume courses such as
+economics and political science. Insight into such differences are
+needed for allowing advisers to help students craft a path that
+matches their interests and temperament.
+
+{\bf Instructors}, in contrast, require information local to their
+specific course offerings. Yet they cannot easily answer the question
+{\it Which majors, and preceding courses feed students into my class?}
+
+{\bf Department chairs} and {\bf deans} are for different reasons in
+need of knowing the migration paths of students in and out of
+departments. Questions such as {\it Does our school offer a rich set
+  of non-major service courses for the university?} and {\it are
+  students from across campus uniformly taking advantage of such
+  courses?} and difficult to answer.
+
+Beyond such specific needs, the myriad of possible pathways through
+curricula also impedes efforts by university administrators to
+encourage behaviors that lead to outcomes deemed desirable by
+their institutions. Such goals might emphasize persistence,
+intellectual breadth, or readiness for the workplace.
+
+The information for these needs is present in all teaching
+institutions. But it is embodied in the tables of databases to which
+few have access, and which would be too difficult to navigate even if
+access was available for all the stake holders. Many universities have
+specialized units that generate specifically requested reports for
+individuals in high level academic positions\footnote{We acknowledge
+  here our own version of such an {\it Institutional Research and
+    Decision Support} unit, which has provided us with numerous
+  insights into both needs, and relevant data at our institution.} But
+they cannot interact with all the individuals in need of insight at
+varying levels of detail.
+
+Some universities have created software that surfaces a selection of
+the needed information broadly to its institution's clients
+(e.g. \cite{carta}). But these tools focus primarily on the very
+focused need of individual students, and therefore lack the ability to
+provide both overview and detailed insight.
+
+Our approach to providing a zoomable, investigative instrument for
+large scale, qualitative curriculum exploration relies on graph
+theory. The approach has been applied to a number of domains and
+tasks, such as detecting communities \cite{PhysRevE.70.056104},
+collecting materials for survey articles \cite{ji2015}, the
+augmentation of collaborative recommendation records \cite{huang2005},
+predicting future collaborations between scholars \cite{liben2007},
+and suggesting drug interactions \cite{zitnik2018}.
+
+We rely primarily on student enrollment records. Our methods are
+therefore applicable to any institution that maintains at least this
+level of record keeping. We explain how the availability of other
+data, such as demographic information greatly adds to the results that
+can be achieved.
+
+To first approximation, we convert enrollment records to directed
+graphs, with nodes modeling courses, links modeling sequential
+enrollment, and link weights modeling enrollment volume. We partition
+the graphs by the course department origins. An existing graphing tool
+\cite{shannon2003cytoscape} exposes more, or less information,
+depending on zoom level.
+
+While the concept is easy to explain, details arise that are not
+immediately obvious. In addition, the most informative mapping from
+enrollments to graph depends on the questions the graph is intended to
+answer. Mappings can vary widely.
+
+After related work, in Section~\ref{sec:mapping} we explain mapping
+options and their implications for questions that can be
+investigated. We explain our dataset in Section~\ref{sec:dataset},
+followed by the details of processing the enrollment data in
+preparation to their ingestion into the visualization tool. In
+Section\ref{sec:visualization} we illustrate the use of Via in
+contexts relevant to several stake holders.
+
