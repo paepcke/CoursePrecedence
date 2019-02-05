@@ -8,115 +8,59 @@
 %% - How are current solutions insufficient?
 %% - What we do
 
-The US higher education system is unique in the world in the extent to
-which it expects undergraduates to explore a variety of courses before
-committing to a field of study. In contrast with virtually all other
-national postsecondary systems, in which students enter schools and
-programs with relatively structured curriculums, US undergraduates are
-encouraged to explore a variety of academic options through an
+US higher education is unique in the world in the extent to
+which schools expect undergraduates to explore a variety of courses before committing to a field of study. In contrast with virtually all other national postsecondary systems, in which students enter schools and programs with relatively structured curricula, US undergraduates are encouraged to explore a variety of academic options through an
 iterative course search and selection process. We call a student's
-eventual sequence of course choices a {\it pathway}.
+eventual sequence of course elections a {\it pathway}.
 
-While enriching when successful, this exploration is fateful. It can
-stall timely progress toward graduation \cite{bailey2015redesigning}
-and thereby be financially burdensome. The absence of explicitly
-designed pathways can create path dependencies that neither students
-nor faculty fully understand \cite{chambliss2014college}. An
-inopportune set of choices can unexpectedly preclude settling on some
-of the majors that were available earlier. 
+While enriching when successful, the elective process is poorly understood by students and almost always fateful. Ethnographic research suggests that students tend to select courses based on partial, poorly integrated information, in light of logistical constraints, and personal preferences that have little directly to do with academics \cite{nathan2006my,rosenbaum2011complexities, rosenbaum2007after}. Absent conscientious design and signposting, students can easily expend time, credit hours, and tuition accumulating courses that do not lead efficiently to majors and completion \cite{bailey2015redesigning}.  
 
-Furthermore, demographic differences between students interacting with
-pathway choices can reinforce inequality
-\cite{armstrong2013paying}. Ethnographic research suggests that
-students tend to select courses based on partial, poorly integrated
-information, in light of logistical constraints, and personal
-preferences that have little directly to do with academics
-\cite{nathan2006my,rosenbaum2011complexities, rosenbaum2007after}.
+Other stakeholders in higher education could benefit from better information about college pathways. The work and priorities of instructors, department chairs, deans, and budget officers are implicated in the relative clarity of pathways and the efficiency with which courses can be sequenced to degree completion. Pathways are notoriously poorly instrumented for observation by students, educators, administrators or researchers \cite{chambliss2014college}.
 
-Yet, understanding the totality of curriculum options is challenging
-not only for students. Other stake holders in the enterprise of higher
-education also need convenient insight into the
-curriculum. Instructors, department chairs, deans, provosts, and even
-Boards of Trustees can usually not easily gain curriculum related
-insights. One challenge in mitigating this lack is that each of these
-potential beneficiaries of improvement require investigative equipment
-of different focal lengths.
+%One challenge in mitigating this lack is that each of these
+%potential beneficiaries of improvement require investigative equipment
+%of different focal lengths.
 
-Day to day, {\bf academic advisors} on the ground lack tools for
-understanding the characteristics of the numerous majors and programs
-they are tasked to explain. For example, it is not trivial to identify
-majors whose requirements have students take courses primarily within
-one department. Requirement structures for majors such as Computer
-Science tend to impose this more intradepartmental regime. Other
-majors, such as History, instead have students consume courses such as
-economics and political science. Insight into such differences are
-needed for helping advisers suggest pathways that match their student
-clients' interests and temperaments.
+%Day to day, {\bf academic advisors} on the ground lack tools for
+%understanding the characteristics of the numerous majors and programs they are tasked to explain. For example, it is not trivial to identify majors whose requirements have students take courses primarily within one department. Requirement structures for majors such as Computer Science tend to impose this more intradepartmental regime. Other majors, such as History, instead have students consume courses such as economics and political science. Insight into such differences are needed for helping advisers suggest pathways that match their student clients' interests and temperaments.
 
-{\bf Instructors}, in contrast, require information local to their
-specific course offerings. Yet they cannot easily answer the question
-{\it Which majors, and preceding courses feed students into my class?}
+%{\bf Instructors}, in contrast, require information local to their specific course offerings. Yet they cannot easily answer the question {\it Which majors, and preceding courses feed students into my class?}
 
-{\bf Department chairs} and {\bf deans} are for different reasons in
-need of knowing the migration paths of students in and out of
-departments. Questions such as {\it Does our school offer a rich set
-  of non-major service courses to the rest of the university?}, and
-{\it are students from across campus uniformly taking advantage of
-  such courses?} are difficult to answer.
+%{\bf Department chairs} and {\bf deans} are for different reasons in need of knowing the migration paths of students in and out of departments. Questions such as {\it Does our school offer a rich set of non-major service courses to the rest of the university?}, and {\it are students from across campus uniformly taking advantage of such courses?} are difficult to answer.
 
-Beyond such specific needs, the myriad of possible pathways through
-curricula also impedes efforts by university administrators to
-encourage behaviors that lead to outcomes deemed desirable by
-their institutions. Such goals might emphasize persistence,
-intellectual breadth, or readiness for the workplace.
+%Beyond such specific needs, the myriad of possible pathways through curricula also impedes efforts by university administrators to encourage behaviors that lead to outcomes deemed desirable by their institutions. Such goals might emphasize persistence, intellectual breadth, or readiness for the workplace.
 
-The information for these needs is present in all teaching
-institutions. But it is embodied in the tables of databases to which
-few have access, and which would be too difficult to navigate even if
-access was available for all the stake holders. Many universities have
-specialized staff that generate specifically requested reports for
+Fortunately the information necessary to observe pathways systematically and at scale is present in all colleges and universities in the form of academic transcripts. Transcripts are the official records documenting courses accumulated by each student as he or she makes academic progress. Yet transcripts typically are housed tables of databases to which few have access, and in their "raw" form exceptionally difficult for useful interpretation. Most schools have
+specialized staff who generate specifically requested reports for
 individuals in high level academic positions\footnote{We acknowledge
-  here our own version of such an {\it Institutional Research and
-    Decision Support} unit, which has provided us with numerous
-  insights into both, information needs, and the semantics of data at
-  our institution.} But they cannot interact with all the individuals
-in need of insight at varying levels of detail.
+here our own version of such a unit, which has provided us with numerous insights into both the information needs, and data semantics at our institution.}, but these personnel typically cannot interact directly with all the parties in need of insight on pathways at varying levels of detail.
 
-Some universities have created software that surfaces a selection of
-the needed information broadly to its institution's clients
-(e.g. \cite{carta}). But these tools focus primarily on the narrower
-needs of individual students, and therefore lack the ability to
-provide both overview and detailed insight.
+%Some universities have created software that surfaces a selection of the needed information broadly to its institution's clients (e.g. \cite{carta}). But these tools focus primarily on the narrower needs of individual students, and therefore lack the ability to provide both overview and detailed insight.
 
-We report here on {\it Via}, which makes inroads into some of these
-vexing problems. Our approach is to provide a zoomable, investigative
-instrument for large scale, qualitative curriculum exploration. The
-system builds on graph theory, and provides a visual interface to
-viewing curricula. Graph approaches have been applied to a number of
+We report here on {\it Via}, an analytic toolkit we have built to observe and understand undergraduate pathways utilizing de-identified transcript data held by a large private research university. Our approach is to provide a zoomable, investigative
+instrument for large-scale, qualitative and quantitative investigations of pathways. Built on graph theory, Via provides a visual interface for observing the course sequences embedded in tens of thousands of transcripts. 
+
+Graph approaches have been applied to a number of
 domains and tasks, such as detecting communities
-\cite{PhysRevE.70.056104}, collecting materials for survey articles
+\cite{Fortunato2004}, collecting materials for survey articles
 \cite{ji2015}, the augmentation of collaborative recommendation
 records \cite{huang2005}, predicting future collaborations between
 scholars \cite{liben2007}, and suggesting drug interactions
 \cite{zitnik2018}.
 
-We rely primarily on student enrollment records. Our methods are
-therefore applicable to any institution that maintains at least this
-level of record keeping. We explain how the availability of additional
-data, such as demographic information greatly adds to the results that
-can be achieved.
+Because our analytic strategy relies primarily on data of a sort held by every legally recognized US college and university, it is applicable far beyond our case school. 
 
-To first approximation, we convert enrollment records to directed
-graphs, with nodes modeling courses, links modeling sequential
-enrollment, and link weights modeling enrollment volume. We partition
-the graphs by courses' department membership. An existing graphing
-tool \cite{shannon2003cytoscape} exposes more, or less information,
-depending on chosen zoom levels.
+%We explain how the availability of additional data, such as demographic information greatly adds to the results that can be achieved.
+
+In our first approximation, we convert transcript information describing course enrollments to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling enrollment volume. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more, or less information, depending on chosen zoom levels.
 
 While the concept is easy to explain, details arise that are not
 immediately obvious. In addition, the most informative mapping from
 enrollments to graphs depends on the questions the graph is intended
 to answer. Resulting mappings can vary widely.
+
+The graph analysis we conduct is based 
+
 
 After related work, and a brief introduction to our dataset,
 Section~\ref{sec:visualization} introduces {\it Via}'s visual
