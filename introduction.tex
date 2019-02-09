@@ -52,22 +52,27 @@ Because our analytic strategy relies primarily on data of a sort held by every l
 
 %We explain how the availability of additional data, such as demographic information greatly adds to the results that can be achieved.
 
-In our first approximation, we convert transcript information describing course enrollments to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling enrollment volume. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more, or less information, depending on chosen zoom levels.
+In our first approximation, we convert transcript information describing course enrollments to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling conditional probabilities of enrolling in a particular course before another one. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more, or less information, depending on chosen zoom levels.
 
 While the concept is easy to explain, details arise that are not
 immediately obvious. In addition, the most informative mapping from
 enrollments to graphs depends on the questions the graph is intended
 to answer. Resulting mappings can vary widely.
 
-The graph analysis we conduct is based 
+
+After related work and a brief introduction to the dataset, section~\ref{sec:methodoloy} introduces how we construct the node and edge relationships in the \textit{Via} network. Section-\ref{sec:visualization} then demonstrates the visual component of the model. After introducing the basic building blocks of the \textit{Via} toolkit, section~\ref{sec:analysis} highlights diverse use-cases of our model to answer questions by stakeholders within a university. This final section will demonstrate both the wide-ranging applicability of our model and will validate the results of our framework by comparing these against well-studied phenomena in the field of education research.
+
+%\textit{Via} is a tool that enables education researchers to gain insights into how students structure their course decisions. One particularly useful feature of the model for this purpose is the ability to filter by the year a student enrolled in a particular course. This enables us to compare the dynamics of student course decisions across different years.
+
+%has argued that the effect of growing introductory computer science courses has resulted largely as a result of the growing monetary returns that computer science fields offer. Educators fear, however, that the attraction to fields in computer and information science, however, may siphon away students interested in the humanities. Using our graph visualization of academic data we will illustrate that while we can observe an increase in the interest of student enrolling in computer science fields, a number of these courses also serve as popular courses that non-CS majors try out for fun. 
 
 
-After related work, and a brief introduction to our dataset,
-Section~\ref{sec:visualization} introduces {\it Via}'s visual
-component. In Section~\ref{sec:mapping} we explain alternative graph
-mapping options, and their implications for questions that can be
-investigated. Sections~\ref{sec:stud_matrix}/\ref{sec:aggr_matrix}
-detail the necessary processing of enrollment data in preparation to
-their ingestion into the visualization component.
+%After related work, and a brief introduction to our dataset,
+%Section~\ref{sec:visualization} introduces {\it Via}'s visual
+%component. In Section~\ref{sec:mapping} we explain alternative graph
+%mapping options, and their implications for questions that can be
+%investigated. %Sections~\ref{sec:stud_matrix}/\ref{sec:aggr_matrix}
+%detail the necessary processing of enrollment data in preparation to
+%their ingestion into the visualization component.
 
 
