@@ -9,13 +9,10 @@
 %% - What we do
 
 US higher education is unique in the world in the extent to
-which schools expect undergraduates to explore a variety of courses before committing to a field of study. In contrast with virtually all other national postsecondary systems, in which students enter schools and programs with relatively structured curricula, US undergraduates are encouraged to explore a variety of academic options through an
-iterative course search and selection process. We call a student's
-eventual sequence of course elections a {\it pathway}.
+which schools expect undergraduates to explore a variety of courses before committing to a field of study. In contrast with virtually all other national postsecondary systems, in which students enter schools and programs with relatively structured curricula, US undergraduates are encouraged to explore a variety of academic options through an iterative course search and selection process. We call a student's
+eventual sequence of course elections a {\it pathway}. Pathways are notoriously poorly instrumented for observation by students, educators, administrators or researchers \cite{chambliss2014college}.
 
-While enriching when successful, the elective process is poorly understood by students, and almost always fateful. Ethnographic research suggests that students tend to select courses based on partial, poorly integrated information, in light of logistical constraints, and personal preferences that have little directly to do with academics \cite{nathan2006my,rosenbaum2011complexities, rosenbaum2007after}. Absent conscientious design and signposting, students can easily expend time, credit hours, and tuition accumulating courses that do not lead efficiently to majors and completion \cite{bailey2015redesigning}.  
-
-Other stakeholders in higher education could benefit from better information about college pathways. The work and priorities of instructors, department chairs, deans, and budget officers are implicated in the relative clarity of pathways and the efficiency with which courses can be sequenced to degree completion. Pathways are notoriously poorly instrumented for observation by students, educators, administrators or researchers \cite{chambliss2014college}.
+While enriching when successful, the contingencies of course elections that accumulate into pathways is poorly understood and are almost always fateful. Ethnographic research suggests that students tend to select courses based on partial, poorly integrated information, in light of logistical constraints and personal preferences that have little directly to do with academics \cite{nathan2006my,rosenbaum2011complexities, rosenbaum2007after}. Absent conscientious design and signposting, students can easily spend time, credit hours, and tuition accumulating courses that do not lead efficiently to majors and completion \cite{bailey2015redesigning}. In addition to students, many other academic stakeholders could benefit from better information about college pathways. The work and priorities of instructors, department chairs, deans, and budget officers are implicated in the relative clarity of pathways and the efficiency with which courses can be sequenced to degree completion. 
 
 %One challenge in mitigating this lack is that each of these
 %potential beneficiaries of improvement require investigative equipment
@@ -30,9 +27,7 @@ Other stakeholders in higher education could benefit from better information abo
 
 %Beyond such specific needs, the myriad of possible pathways through curricula also impedes efforts by university administrators to encourage behaviors that lead to outcomes deemed desirable by their institutions. Such goals might emphasize persistence, intellectual breadth, or readiness for the workplace.
 
-Fortunately the information necessary to observe pathways systematically and at scale is present in all colleges and universities in the form of academic transcripts. Transcripts are the official records documenting courses accumulated by each student as he or she makes academic progress. Yet transcripts typically are housed tables of databases to which few have access, and in their ``raw'' form exceptionally difficult for useful interpretation. Most schools have
-specialized staff who generate specifically requested reports for
-individuals in high level academic positions\footnote{We acknowledge
+Fortunately the information necessary to observe pathways systematically and at scale is present in all colleges and universities in the form of academic transcripts. Transcripts are the official records documenting courses accumulated by each student as he or she makes academic progress. Yet transcripts typically are housed in tables of databases to which few have access, and in their ``raw'' form exceptionally opaque to interpretation. Most schools have specialized staff who generate specifically requested reports for individuals in high level academic positions\footnote{We acknowledge
 here our own version of such a unit, which has provided us with numerous insights into both the information needs, and data semantics at our institution.}, but these personnel typically cannot interact directly with all the parties in need of insight on pathways at varying levels of detail.
 
 %Some universities have created software that surfaces a selection of the needed information broadly to its institution's clients (e.g. \cite{carta}). But these tools focus primarily on the narrower needs of individual students, and therefore lack the ability to provide both overview and detailed insight.
@@ -42,34 +37,21 @@ instrument for large-scale, qualitative and quantitative
 investigations of pathways. Built on graph theory, {\it Via} provides a
 visual interface for observing the course sequences embedded in tens
 of thousands of transcripts. In addition, {\it Via}'s grounding in graphs
-allows us to bring associated mathematical computations to bear.
+allows us to bring associated mathematical computations to bear on the problem of pathway evolution.
 
-Graph approaches have been applied to a number of
-domains and tasks, such as detecting communities
-\cite{Fortunato2004}, collecting materials for survey articles
-\cite{ji2015}, the augmentation of collaborative recommendation
-records \cite{huang2005}, predicting future collaborations between
-scholars \cite{liben2007}, and suggesting drug interactions
-\cite{zitnik2018}.
-
-Because our analytic strategy relies primarily on data of a sort held by every legally recognized US college and university, it is applicable far beyond our case school. 
+Graph approaches have been applied to a wide variety of other tasks, such as detecting communities \cite{Fortunato2004}, collecting materials for survey articles \cite{ji2015}, the augmentation of collaborative recommendation records \cite{huang2005}, predicting future collaborations between scholars \cite{liben2007}, and suggesting drug interactions \cite{zitnik2018}. Our primary contribution in this paper is to apply graph approaches to the sequencing of academic coursework. Because our analytic strategy relies on data of a sort held by every legally recognized US college and university, it is amenable to application throughout the US postsecondary sector. 
 
 %We explain how the availability of additional data, such as demographic information greatly adds to the results that can be achieved.
 
-In our first approximation, we convert transcript information describing course enrollments to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling conditional probabilities of enrolling in a particular course before another one. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more, or less information, depending on chosen zoom levels.
+In our first approximation here, we convert transcript information describing course enrollments at our case school to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling conditional probabilities of enrolling in a particular course before another one. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more or less information, depending on chosen zoom levels.
 
-While the concept is easy to explain, details arise that are not
-immediately obvious. In addition, the most informative mapping from
-enrollments to graphs depends on the questions the graph is intended
-to answer. Resulting mappings can vary widely.
+%While the concept is easy to explain, details arise that are not
+%immediately obvious. In addition, the most informative mapping from
+%enrollments to graphs depends on the questions the graph is intended
+%to answer. Resulting mappings can vary widely.
 
-
-After related work and a brief introduction to the dataset,
-Section~\ref{sec:methodology} introduces how we construct the node and
-edge relationships in the {\em Via}
-network. Section~\ref{sec:visualization} then demonstrates the visual
-component of the model. After thus introducing the basic building blocks of
-the {\em Via} toolkit, Section~\ref{sec:analysis} highlights diverse use-cases of our model to answer questions by stakeholders within a university. This final section will demonstrate the wide-ranging applicability of our model, and will validate the results of our framework by comparisons against well-studied phenomena in the field of education research.
+After related work and a brief introduction to our dataset, Section~\ref{sec:methodology} introduces how we construct the node and
+edge relationships in the {\em Via} network. Section~\ref{sec:visualization} then demonstrates the visual component of the model.  Section~\ref{sec:analysis} highlights diverse use-cases of our model to address questions of different academic stakeholders: students, instructors, and administrators. This final section demonstrates the wider applicability of our model, by comparing our results against well-studied phenomena in education research.
 
 %\textit{Via} is a tool that enables education researchers to gain insights into how students structure their course decisions. One particularly useful feature of the model for this purpose is the ability to filter by the year a student enrolled in a particular course. This enables us to compare the dynamics of student course decisions across different years.
 
