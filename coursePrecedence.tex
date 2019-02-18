@@ -78,7 +78,7 @@
 % Paper metadata (use plain text, for PDF inclusion and later
 % re-using, if desired).  Use \emtpyauthor when submitting for review
 % so you remain anonymous.
-\def\plaintitle{Via: Illuminating Course Choice and Discipline Interactions}
+\def\plaintitle{Via: Illuminating Undergraduate Academic Pathways at Scale}
 \def\plainauthor{First Author, Second Author, Third Author,
   Fourth Author, Fifth Author, Sixth Author}
 \def\emptyauthor{}
@@ -159,7 +159,17 @@
 \maketitle
 
 \begin{abstract}
-The processes through which course selections accumulate into college pathways in US higher education is poorly instrumented for observation at scale. We offer an analytic toolkit, called {\em Via}, that transforms commonly available enrollment data into formal graphs amenable to interactive visualizations and custom queries by a variety of potential stakeholders: college students, instructors, and administrators. We demonstrate the toolkit utilizing eighteen years of enrollment data at a large private research university, and show that findings yielded by this analytic technique complement prior work research on higher education.
+The processes through which course selections accumulate into college
+pathways in US higher education is poorly instrumented for observation
+at scale. We offer an analytic toolkit, called {\em Via}, which
+transforms commonly available enrollment data into formal graphs that
+are amenable to interactive visualizations and computational
+exploration. The tool is intended for a variety of stakeholders:
+college students, instructors, and administrators. We explain the
+procedures required to project the enrollment records onto graphs, and
+then demonstrate the toolkit utilizing eighteen years of enrollment
+data at a large private research university. We show that resulting
+findings complement prior research on higher education.
  \end{abstract}
 
 \category{H.5.m.}{Information Interfaces and Presentation
@@ -179,39 +189,38 @@ The processes through which course selections accumulate into college pathways i
 %an inverse correlation between the complexity of a curriculum and the
 %graduation rate of students attempting that curriculum.''
 
-The dangers of choice overload are well documented. Research in marketing \cite{botti2006} and psychology
-\cite{schwartz2004paradox iyengar2000} has demonstrated both the stated preference for
-choice and improved factual success when choice is limited. In higher education, \cite{bake2018} find that simply reducing choice is not an acceptable answer. While students do not have strong reactions to increased guidance, they react negatively to a reduction in choice. Thus enriching guidance is one promising
+The dangers of choice overload are well documented. Research in marketing \cite{botti2006} and psychology \cite{schwartz2004paradox,iyengar2000} has demonstrated both the stated preference for
+choice and improved factual success when choice is limited. In higher education, Bake et al. \cite{bake2018} find that simply reducing choice is not an acceptable answer. While students do not have strong reactions to increased guidance, they react negatively to a reduction in choice. Thus enriching guidance is one promising
 approach. The author of \cite{slim2016} shows that simulations and
 predictions based on student models can successfully identify points
 where advisors could intervene to improve graduation outcomes.
 
 Community colleges and other broad-access schools are at least as affected by the tension between the benefits of choice and student confusion. Educational
 outcomes in community colleges are negatively affected by ``chaotic
-enrollment patterns'' \cite{crosta2014, bail2015, scot2015}. A number of these institutions have explored options for improved support by providing ``guided pathways'' \cite{jenkins2013}, but without the benefit of graph visualization and other computational-techniques. A few comprehensive universities have built carefully instrumented "early alert" and other advising tools utilizing institutional data \cite{fletcher2016integrated}, but the computational techniques underlie these tools remain opaque. 
+enrollment patterns'' \cite{crosta2014, bail2015, scot2015}. A number of these institutions have explored options for improved support by providing ``guided pathways'' \cite{jenkins2013}, but without the benefit of graph visualization and other computational-techniques. A few comprehensive universities have built carefully instrumented ``early alert'' and other advising tools utilizing institutional data \cite{fletcher2016integrated}, but the computational techniques underlie these tools remain opaque. 
 
-Throughout both the social and physical sciences, graphs are used to visualize, simplify and facilitate computational analysis of complex dynamic systems. Graphs have been applied to model a diverse set of networks such as food chains \cite{Hall1993}, the human genome \cite{Pevzner1989} and ecological systems \cite{Fortin2012}. Within the social sciences, graphing methods have a long history of application to the study systems-level phenomena \cite{Borgatti2009}. The use of graphs within the social sciences was particularly spurred on by the insight that human societies could be structured like biological systems. The $19^{th}$ century french philosopher, Emile Durkheim, argued for instance that social regularities could be found in the structure of social environments in which they were embedded \cite{Durkheim1951}. By studying systemic regularities it is possible to derive macro-level insights about the structure of many micro-level interactions. 
+Throughout both the social and physical sciences, graphs are used to visualize, simplify and facilitate computational analysis of complex dynamic systems. Graphs have been applied to model a diverse set of networks such as food chains \cite{Hall1993}, the human genome \cite{Pevzner1989} and ecological systems \cite{Fortin2012}. Within the social sciences, graphing methods have a long history of application in the study of systems-level phenomena \cite{Borgatti2009}. The use of graphs within the social sciences was particularly spurred on by the insight that human societies could be structured like biological systems. The $19^{th}$ century French philosopher, Emile Durkheim, argued for instance that social regularities could be found in the structure of social environments in which they were embedded \cite{Durkheim1951}. By studying systemic regularities it is possible to derive macro-level insights about the structure of many micro-level interactions. 
 
-Since the mid 1950s, graphs have been applied to model the flow of information in social and professional networks. As part of the MIT Group Networks Laboratory, Leavitt et al. observed how the structure of inter-personal relationships between groups of coworkers facilitated the spread of information throughout a team of colleagues \cite{Leavitt1951}. More recently, similar methods have been applied to study how workplace professional networks influence the spread of information through company email chains \cite{Fisher2004}. The modeling of knowledge transmission parallels closely how graph theoretic methods have been applied to study social dynamics in the field of education. Studies of citation networks, for instance, describe how intellectual advances spread through academic space. \cite{Batagelj2003}\cite{Garfield1964}. 
+Since the mid-1950s, graphs have been applied to model the flow of information in social and professional networks. As part of the MIT Group Networks Laboratory, Leavitt et al. observed how the structure of interpersonal relationships between groups of coworkers facilitated the spread of information throughout a team of colleagues \cite{Leavitt1951}. More recently, similar methods have been applied to study how workplace professional networks influence the spread of information through company email chains \cite{Fisher2004}. The modeling of knowledge transmission parallels closely how graph-theoretic methods have been applied to understand social dynamics in the field of education. Studies of citation networks, for instance, describe how intellectual advances spread through academic space \cite{Batagelj2003, Garfield1964}. 
 
 
 % If individual publications are modeled as nodes in the citation network and edges represent a direct citation of one paper by another it should not be feasible for cycles to exist in the citation network. A similar logic applies to the structuring of course sequences in which cycles are not desirable among introductory classes that are intended to be taken sequentially.
 
-A number of the challenges posed in representing citation networks, such as learning optimal edge weights, are directly applicable to the problem of modeling course sequences. Within citation networks, it is useful to modulate the edge strength between two papers in order to represent the relative influence of a cited paper. Batagelj proposes solutions to this problem by introducing SPC weights on each edge of the network to capture the incoming and outgoing "flow of information" for a given paper \cite{Batagelj2003}. Hajra et al. also observe an aging phenomena among papers in which the probability that a paper is cited decays with time at an exponential rate proportional to $t^{0.9}$ up to ten years after its publication date. Course selection may display a similar exponential time-dependent probability. Moreover, just as citation networks provide a framework for modeling the flow of knowledge within academia, course sequence networks imply shared and prerequisite knowledge between courses. 
+A number of the challenges posed in representing citation networks, such as learning optimal edge weights, are directly applicable to the problem of modeling course sequences. Within citation networks, it is useful to modulate the edge strength between two papers in order to represent the relative influence of a cited paper. Batagelj proposes solutions to this problem by introducing SPC weights on each edge of the network to capture the incoming and outgoing ``flow of information'' for a given paper \cite{Batagelj2003}. Hajra et al. also observe aging phenomena among papers in which the probability that a paper is cited decays with time at an exponential rate proportional to $t^{0.9}$ up to ten years after its publication date \cite{Hajra2005}. Course selection may display a similar exponential time-dependent probability. Moreover, just as citation networks provide a framework for modeling the flow of knowledge within academia, course sequence networks imply shared and prerequisite knowledge between courses. 
 
-Also analogous to our particular framework is recent work done in the field of representing social connections within massive open online courses (MOOCs). Large online education providers, such as \textit{Coursera}, use thread messaging boards to facilitate collaboration between students. Within these forums any student in a particular course can post a question or remark to start a thread of conversation. The data gathered from these educational messaging boards enables researchers to study the exchange of information between students \cite{Brinton2016}, the influence of students on others' participation in the course \cite{Sinha2014a} and more general social dynamics of a class.
+Also analogous to our particular framework is recent work done in the field of representing social connections within massive open online courses (MOOCs). Large online education providers, such as \textit{Coursera}, use thread messaging boards to facilitate collaboration between students. Within these forums, any student in a particular course can post a question or remark to start a thread of conversation. The data gathered from these educational messaging boards enables researchers to study the exchange of information between students \cite{Brinton2016}, the influence of students on others' participation in the course \cite{Sinha2014a} and more general social dynamics of a class.
 
-Sinha et al. for instance model each participant within a particular \textit{Coursera} class as a node and draw a directed edge from a particular thread or sub-thread initiator to any of the people who engaged in that discussion \cite{Sinha2014}. By doing so, the authors are able to represent the flow of topics and engagement within the social dynamics of a certain course. In particular, Sinha et al. were able to analyze measures of degree and betweenness centrality on this model of student engagement, in order to understand the influence of discussion initiators on the overall collaboration of students in the class. The p made clear if we interpret discussion topics as self-contained units of knowledge that are part of a course. 
+Sinha et al., for instance, model each participant within a particular \textit{Coursera} class as a node, and draw a directed edge from a thread or sub-thread initiator to any of the people who engaged in that discussion \cite{Sinha2014}. By doing so, the authors are able to represent the flow of topics and engagement within the social dynamics of a certain course. Sinha et al. were able to analyze measures of degree and betweenness centrality on this model of student engagement, in order to understand the influence of discussion initiators on the overall collaboration of students in the class. The parallels are made clear if we interpret discussion topics as self-contained units of knowledge that are part of a course. 
 
 Similarly to our network construction, Sinha et al. use a gradient
 coloring of nodes to indicate its relative betweenness
-centrality. Zhu et al. similarly seek to model the engagement of
+centrality. Zhu et al. also seek to model the engagement of
 students in discussion forums on a week-by-week basis using
 Exponential Graph Models (EGM) \cite{Zhu2016}. The use of EGMs allows
 the authors to model a student's participation for a given week by
 incorporating a student's performance for both the previous and
 subsequent weeks. While inspired by EGMs, our model does not directly
-include aggregate network statistics in order to compute node and edge
+include aggregate network statistics, in order to compute node and edge
 properties. Instead, we model the probability of two courses
 being taken sequentially given data in which the courses may have been
 taken several academic terms apart. Finally, \textit{NetworkSeer} uses a similar modeling framework as in the previous papers but additionally models individual students' demographic information within the course discussion thread \cite{Wu2016}. Although we do not have direct access to students' demographic data, our model uses a student's final major to study the differences in course-taking behavior between students.
@@ -220,7 +229,7 @@ taken several academic terms apart. Finally, \textit{NetworkSeer} uses a similar
 
 The social dynamics of student participation in MOOCs and the spread
 of knowledge through citation networks are the closest parallel to
-modeling students' course taking behavior in US universities. Courses can
+modeling students' course-taking behavior in US universities. Courses can
 be observed as distinct units of information that share overlap and
 prerequisite knowledge with other courses. Academic publications and
 forum discussions are similarly self-contained units of knowledge that
@@ -243,7 +252,7 @@ which they enrolled, and the academic term for which they enrolled in the class.
 \subsection{Data Preprocessing}
 \label{sec:data_processing}
 
-Data preprocessing involved the parsing of the requisite information made available through the dataset; for each student, all courses are paired with their terms of enrollment. In order to preserve the normal, sequential nature of courses across academic years, the Summer Period was omitted from all experiments. Student metadata is not incorporated in the generation of sequence projection models; however, we do filter by student attributes in order to create subsets of the original dataset -- a strategy that might also be deployed with demographic or other student characteristics.
+Data preprocessing involved the parsing of the requisite information made available through the dataset; for each student, all courses are paired with their terms of enrollment. In order to preserve the normal, sequential nature of courses across academic years, we omit the Summer Period from all experiments. Student metadata is not incorporated in the generation of sequence projection models; however, we do filter by student attributes in order to create subsets of the original dataset -- a strategy that might also be deployed with demographic or other student characteristics.
 
 \section{Methodology}
 \label{sec:methodology}
@@ -254,7 +263,7 @@ Data preprocessing involved the parsing of the requisite information made availa
     \caption{An overview of the projection created from enrollment
       data. Enrollment sequences are tallied and normalized to define
       a conditional probability of taking one course after
-      another. Rows $S_i$ describe students, while columns $C_i$
+      another. Rows $s_i$ describe students, while columns $c_i$
       correspond to course offerings.}
     \label{fig:simple}
 \end{figure}
@@ -262,10 +271,10 @@ Data preprocessing involved the parsing of the requisite information made availa
 Our first challenge is to build an expressive, yet interpretable model
 of course-to-course interactions that results in the graph based
 representation of academic pathways. The representation must support
-the desired ability to discover student enrollment patterns over time,
+the desired ability to discover student enrollment patterns over time
 and enrollment interactions between departments. 
 
-Towards this end we compile student-to-course enrollment information
+Towards this end, we compile student-to-course enrollment information
 into what we will call a course-to-course projection model, a network
 that represents courses as nodes and course relationships as weighted
 edges. Figure \ref{fig:simple} illustrates the process. We begin with
@@ -293,16 +302,16 @@ following sections merely formalize the overview.
 {\em Via} receives data in the form of tabular student enrollment
 records. The input to the projection algorithm is a matrix $M$ of
 shape $(|S|, |C|)$, where $S$ is the set of all students and $C$ is
-the set of all courses. A given entry $A_{ij}$ represents the time
+the set of all courses. A given entry $M_{ij}$ represents the time
 when a student $i$ enrolls in some course $j$. For example, an entry
-$A_{ij} = 1$ signifies that student $i$ enrolled in course $j$ during
+$M_{ij} = 1$ signifies that student $i$ enrolled in course $j$ during
 their first academic term, generally quarter or semester. An entry
-$A_{ij} = 0$ implies that $i$ never enrolled in $j$. This thus implies
-that each row $a_i$ represents the entire course enrollment history of
+$M_{ij} = 0$ implies that $i$ never enrolled in $j$. This thus implies
+that each row $m_i$ represents the entire course enrollment history of
 some student $i$. We generate various forms of matrix $M$ from the raw
 enrollment data by filtering on different student attributes. The
 nature of the filter depends on the questions being asked. For
-example, if we are interested only in Humanities majors, we would
+example, if we are only interested in those who majored in the Humanities, we would
 limit $M$ to this student subset. Another filter one might apply at
 this step is year of enrollment, if only that time slice is of
 interest. The more filtering is applied to $M$ the faster the
@@ -323,14 +332,14 @@ $M$. We weight each edge in $P$ using conditional probabilities that
 describe how likely one is to take one course given another
 course. Thus, entry $P_{ij}$ represents the conditional probability of
 taking course $j$ given that one has taken course $i$. $P$ aggregates
-students, losing some information, but gaining the probabilities.
+students, losing some information, but gaining the probability of moving from one course to another.
 
 Matrix $P$ is thus a representation of how even non-adjacent course nodes in $M$ interact, based on the nature of student enrollment. We use this matrix $P$ as the basis of all calculations and visualizations. 
  The parameters for the conditional probabilities are fit based on counts determined in the calculation of intermediary matrix $\tilde{P}$ of shape $(|C|, |C|)$. We calculate each entry $\tilde{P}_{ij}$ by accumulating the occurrences of course $i$ taken at some point before course $j$ across all students in set $S$:
 \begin{equation}
-  \tilde{P}_{ij} = \sum_{s=1}^{|S|} \mathbbm{1}\{A_{si} - A_{sj} \geq 0\}* d(A_{si} - A_{sj})
+  \tilde{P}_{ij} = \sum_{s=1}^{|S|} \mathbbm{1}\{M_{si} - M_{sj} \geq 0\}* d(M_{si} - M_{sj})
 \end{equation}
-where $A_{si} - A_{sj}$ is the academic timestep delta (commonly
+where $M_{si} - M_{sj}$ is the academic timestep delta (commonly
 measured in semesters, or quarters) between a student $s$'s taking
 course $i$ and course $j$. Function $d$ is a second point in the
 visualization construction where flexibility is provided. The function
@@ -348,7 +357,7 @@ the following choice attenuates the relationship between two courses
 through an exponential decay over enrollment term distance:
 
 \begin{equation}
-  \tilde{P}_{ij} = \sum_{s=1}^{|S|} \mathbbm{1}\{A_{si} - A_{sj} \geq 0\}* \lambda^{A_{si} - A_{sj}}
+  \tilde{P}_{ij} = \sum_{s=1}^{|S|} \mathbbm{1}\{M_{si} - M_{sj} \geq 0\}* \lambda^{M_{si} - M_{sj}}
 \end{equation}
 where, $\lambda$ is a constant that controls decay rate. Intuitively, this type of function gives more weight to close course-pair enrollments than temporally distant course-pair enrollments.
 
@@ -358,16 +367,16 @@ follows course $i$. In the following example, elapsed time between two
 courses beyond one term would sever the relationship:
 \begin{equation}
 d = \begin{cases} 
-      1, & A_{si} - A_{sj} = 1 \\
-      0, & A_{si} - A_{sj} > 1 
+      1, & M_{si} - M_{sj} = 1 \\
+      0, & M_{si} - M_{sj} > 1 
     \end{cases}
 \end{equation}
 More elaborate discrete functions could amplify course relationships of
 particular time distances.
 
-With $\tilde{P}$, we calculate the final projection matrix $P$. Entry $P_{ij}$ is a conditional probability $p(j|i)$ whose parameters can be computed with the following closed form expression:
+Using $\tilde{P}$, we calculate the final projection matrix $P$. In some experiments, we set $P = \tilde{P}$, in order to gain access to a raw count projection matrix. In other experiments, we set $P$ to be a matrix of conditional probabilities between courses. In this case, each entry $P_{ij}$ is a conditional probability $p(j|i)$ whose parameters are computed using the following closed form expression:
 \begin{equation}
-    P_{ij} = p(j|i) = \frac{\tilde{P}_{ij}}{\sum_{s=1}^{|S|}\mathbbm{1}\{A_{si} > 0\}}
+    P_{ij} = p(j|i) = \frac{\tilde{P}_{ij}}{\sum_{s=1}^{|S|}\mathbbm{1}\{M_{si} > 0\}}
 \end{equation}
 $P_{ij}$ thus represents the proportion of students who take the
 course sequence: course $i$ followed by $j$ out of the total number of
@@ -431,12 +440,7 @@ university's curricular landscape. We will now showcase the mapping's utility fr
 We begin by showing how {\em Via} recovers high-level, university-wide
 trends that have been independently observed in the literature. 
 
-In particular, we determine the overall {\em accessibility} of
-departments at varying historic time periods. By accessibility we mean
-the breadth of courses that feed into particular
-departments. Alternatively, the term describes the degree to which
-courses in one department are sources of students who take courses
-beyond their immediate core interest.
+In particular, we determine the overall {\em accessibility} of departments at varying historic time periods. By accessibility we mean the breadth of courses that feed into particular departments. Alternatively, the term describes the degree to which courses in one department act as resources for students who take courses beyond their immediate core interest.
 
 Our analysis employs the {\em PageRank} algorithm devised by Page
 \textit{et al.}  \cite{Page1999}. We compute PageRank on a series of
@@ -477,7 +481,7 @@ two sets of three graphs are presented in Figure \ref{fig:evolution}.
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{final-evolution.pdf}
-    \caption{A comparison over time of PageRank values by department in both the entire undergraduate network (light blue) and the undergraduate network filtered on students who earned a Bachelor's of Arts (BA) degree (red). We argue that PageRank offers us a highly flexible method of determining course accessibility based on aggregate student behavior.}
+    \caption{A comparison over time of PageRank values by department in both the entire undergraduate network (top row) and the undergraduate network filtered on students who earned a Bachelor's of Arts (BA) degree (bottom row). We argue that PageRank offers us a highly flexible method of determining course accessibility based on aggregate student behavior.}
     \label{fig:evolution}
 \end{figure}
 
@@ -492,7 +496,7 @@ More generally, we can interpret the relative size of the departments
 in the Figure \ref{fig:evolution} as the accessibility of departments
 across the different disciplines at the university throughout any time
 period in an undergraduate's career. One could interpret this quantity
-as an inverse relationship with the activation energy required to
+as having an inverse relationship with the activation energy required to
 begin taking courses in a given department. In this case a
 department's high PageRank score would indicate a relative ease of
 entering and taking a course within a particular department. While
@@ -530,7 +534,7 @@ Our results are in harmony with observations made by education researchers. Over
     \centering
     \includegraphics[width=0.55\columnwidth]{final-modularity-history.pdf}
     \includegraphics[width=0.44\columnwidth]{final-modularity-ee.pdf}
-    \caption{A comparison between the student behavioral patterns in two departments--- History (left) and Electrical Engineering (right)---from the years 2012-2016. Labels in the small circles are course names, such as `EE41' and `History 198'.}
+    \caption{A comparison between the student behavioral patterns in two departments--- History (left) and Electrical Engineering (right)---from the years 2012-2016. Labels in the small circles are course names, such as ``\textsc{ee41}'' and ``\textsc{history198}''.}
     \label{fig:modularity}
 \end{figure}
 
@@ -552,16 +556,16 @@ more a department is intra-connected. This effect is caused by highly
 prescriptive requirement structures.
 
 As a second use case, we illustrate how \textit{Via} can be leveraged
-to discover the ``try-me'' Departments offer such service courses for students
-majoring in unrelated fields, but are interested in exploring other
+to discover the ''try-me'' courses. Departments offer such service courses for students
+majoring in unrelated fields, but who are interested in exploring other
 areas of study. {\em Via} enables quick discovery of such courses.
 
 We find the ``try-me'' courses by filtering on students of a
 particular major during sequence matrix generation. We then identify
 the most popular courses within this generated graph that are not in
 the major used as a filter. For instance, by filtering on the History
-major, we observe that of the History majors, nearly 28\% take CS105
-and 21\% take CS106A. These trends are visualized through variations
+major, we observe that of the History majors, nearly 28\% take \textsc{cs105}
+and 21\% take \textsc{cs106a}. These trends are visualized through variations
 in node coloration in Figure \ref{fig:history-try-me}.
 
 \begin{figure}[h]
@@ -571,7 +575,7 @@ in node coloration in Figure \ref{fig:history-try-me}.
     \label{fig:history-try-me}
 \end{figure}
 
- Babad et al. have discovered that the primary reasons students decide to enroll in a particular course are the learning value of the class followed closely by the lecture style \cite{Babad2003}. Particularly difficult courses are avoided by students unless otherwise required. Our assessment of the recommended Computer Science 'try-me' courses for History majors corroborates these results. Although CS106A is branded as the most popular introductory Computer Science course at the university from which we have acquired our dataset, CS105 presents as the Computer Science course for non-majors and is also known to be less rigorous. Our \textit{Via} toolkit is thus able to offer a more personalized course discovery system for students of a particular major. 
+ Babad et al. have discovered that the primary reasons students decide to enroll in a particular course are the learning value of the class followed closely by the lecture style \cite{Babad2003}. Particularly difficult courses are avoided by students unless otherwise required. Our assessment of the recommended Computer Science ``try-me'' courses for History majors corroborates these results. Although \textsc{cs106a} is branded as the most popular introductory Computer Science course at the university from which we have acquired our dataset, \textsc{cs105} presents itself as the Computer Science course for non-majors and is also known to be less rigorous. Our \textit{Via} toolkit is thus able to offer a more personalized course discovery system for students of a particular major. 
  
 \subsection{Instructor Stakeholders}
 \label{sec:instructor_stakeholders}
@@ -587,24 +591,23 @@ and improve lesson plans \cite{Leaver2002}.
     \includegraphics[width=18cm]{final-persistence.pdf}
     \caption{Student persistence metrics in Biology, Chemistry and
       Mathematics. The support courses for the biology and chemistry
-      departments' introductory courses, BIO41A and CHEM31AC,
+      departments' introductory courses, \textsc{bio41a} and \textsc{chem31ac},
       respectively, lead to higher subsequent enrollment rates within
       the respectivedepartments.}
     \label{fig:persistence}
 \end{figure*}
 
-In Figure \ref{fig:spanlang}, we show that it is possible to use the
+We show that it is possible to use the
 course probabilities associated with course-to-course interactions to
 study the background of students who take higher-level Spanish
-language classes. We accomplish this determination examining the
+language classes. We accomplish this analysis by examining the
 conditional probability graph generated with all enrollment data. We
 set our function $d$ as sensitive only to enrollments in course pairs
 within one year of each other in order to capture delayed enrollment
 behaviors. We can thus interpret edge weights as probability $p(i|j
-\text{ within the past year})$. Examine the courses associated with
-the V-structure colored in red--- \textsc{spanlang3} (bottom middle),
-\textsc{spanlang2a} (bottom right), and \textsc{spanlang11c} (top
-middle). \textsc{spanlang3} is the final term of the non-accelerated
+\text{ within the past year})$. In Figure \ref{fig:spanlang}, we examine the courses associated with
+the V-structure colored in red--- \textsc{spanlang3} (bottom),
+\textsc{spanlang2a} (left), and \textsc{spanlang11c} (top). \textsc{spanlang3} is the final term of the non-accelerated
 offering of the first-year Spanish language sequence,
 \textsc{spanlang2a} is the final term of the accelerated first-year
 sequence (often taken by students with prior exposure to the language
@@ -621,7 +624,7 @@ is almost three times that of a student who enrolls in
 $p(\textsc{spanlang11c}|\textsc{spanlang3}) = 0.038$ and
 $p(\textsc{spanlang11c}|\textsc{spanlang2a}) = 0.013$. It is possible
 that this effect stems from a difference in the instruction
-grammatical foundations in the university's introductory courses, and high school language programs. If so, then this observation is in accordance with the research of Leaver \textit{et al.}, which details the significance in varying teaching philosophies commonly seen in foreign language classrooms at different language acquisition levels \cite{Leaver2002}.
+of grammatical foundations in the university's introductory courses, and high school language programs. If so, then this observation is in accordance with the research of Leaver \textit{et al.}, which details the significance in varying teaching philosophies commonly seen in foreign language classrooms at different language acquisition levels \cite{Leaver2002}.
 
 While one may interpret this observation in many ways, we argue that the simplicity of the process through which this information can be found greatly decreases the time and effort required to observe enrollment patterns from the perspective of university administrations.
 
@@ -641,23 +644,18 @@ enrollments within the same department. In Figure
 \ref{fig:persistence} we show the student persistence within a
 department using a raw count projection model with discrete discount
 function $d$ that captured all non-co-enrollment relationships between
-courses from 2014-2018.  This ``persistence within a department''
-metric can be computed for a given class $i$ in a department $x$ by
-finding the out-degree of the class node and then dividing by the
-total number of students who enrolled in class $i$. This method is
-equivalent to finding the expected number of courses taken within
-department $x$ after enrollment in class $i$. Here we measure the
+courses from 2014-2018.  This ``persistence within a department'' metric can be computed for a given class $i$ in a department $x$ by finding the out-degree of the class node and then dividing by the total number of students who enrolled in class $i$. This method is equivalent to finding the expected number of courses taken within department $x$ after enrollment in class $i$. Observe that this is robust to a course's discontinuation across academic years due to the conditions under which the ratio is calculated. Here we measure the
 average number of courses taken within a department after having
 enrolled in a given course. Within the Biology and Chemistry
 departments, we recover the insight that the 1-unit companion courses
-to the introductory courses (BIO41A and CHEM31AC for Biology and
+to the introductory courses (\textsc{bio41a} and \textsc{chem31ac} for Biology and
 Chemistry, respectively) increased student persistence. Intuitively,
 this observation indicates that enrollment in these courses led to an
 overall increase in the number of courses taken within the department,
 on average. We contrast this with the Math department. Students who
 enrolled in the most courses offered within the Math department were
 those who enrolled in the first course of the honors multivariable
-mathematics sequence, MATH51H. This fact can be explained by the fact that the primary introductory course sequence in the Math department (MATH 51, MATH 52, MATH 53) often serve as prerequisite courses for classes in other departments in engineering and social sciences. Enrolling in the honors-level mathematics sequence perhaps indicates a given student's higher intrinsic inclination to the subject matter.
+mathematics sequence, \textsc{math51h}. This observation can be explained by the fact that the classes in the primary introductory course sequence in the Math department (\textsc{math51}, \textsc{math52}, \textsc{math53}) often serve as prerequisite courses for classes in other departments in engineering and social sciences. Enrolling in the honors-level mathematics sequence perhaps indicates a given student's higher intrinsic inclination to the subject matter.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\columnwidth]{final-spanlang.pdf}  
@@ -673,7 +671,7 @@ knowledge. Researchers such as education or sociology scholars
 studying universities and colleges other than their own have even less
 access to role information.
 
-We illustrate here how {\em Via} can recover course 'roles'. The
+We illustrate here how {\em Via} can recover course ``roles.'' The
 application of more sophisticated algorithms rooted in graph theory
 allows {\em Via} users to detect both roles and communities within
 course networks. To this end we applied a RolX \cite{Henderson2012}
@@ -690,7 +688,7 @@ roles of courses as they pertain to students. We posit the successful
 recovery of introductory courses (Role~1, red), intermediate courses
 (Role~2, blue), and senior project / enrichment courses (Role~3,
 green). This assignment of roles is supported by the NodeSense metrics
-that are returned by the RolX algorithm. We will examine case these
+that are returned by the RolX algorithm. We will examine these
 metrics by case. According to the NodeSense metrics, Role~1 is a
 classification whose member nodes tend to have high closeness to other
 nodes, as well as a very low in-degree. These properties, coupled with
@@ -699,8 +697,7 @@ that enable students who enroll in these courses to access new parts
 of the network, perhaps through an acquisition of foundational
 skills.
 
-It may seem counter intuitive that introductory courses have low in
-degree. Recall, however, that inflow represents students arriving from
+It may seem counter intuitive that introductory courses have low in-degree. Recall, however, that inflow represents students arriving from
 other courses. Yet, introductory courses are often consumed by
 students just entering higher education. They will not yet have taken
 other courses. In our graph model there will thus not be a `feeder
@@ -720,7 +717,7 @@ above role interpretations.
     \centering
     \includegraphics[width=0.75\columnwidth]{final-rolx-sense.pdf}
     \includegraphics[width=0.24\columnwidth]{final-rolx.pdf}
-    \caption{RolX analysis of course sequences. We posit that Roles~1, 2, and 3 describe introductory courses, intermediate level courses, and senior project / enrichment courses. (Best viewed in color.)}
+    \caption{RolX analysis of course sequences (Best viewed in color). We posit that Roles~1, 2, and 3 describe introductory courses, intermediate level courses, and senior project / enrichment courses.}
     \label{fig:rolx}
 \end{figure}
 
@@ -740,7 +737,7 @@ use cases.
 We explained the process through which standard enrollment data can be
 transformed into graph structures that may be tuned to particular
 investigative goals. This flexibility arises both during graph
-construction, in during interactive manipulation of the
+construction, and during interactive manipulation of the
 graphs. We deploy the existing tool Cytoscape for such
 manipulations, but other tools may be just as appropriate, once graphs
 are constructed through the algorithm we have presented.
@@ -755,7 +752,7 @@ and what-if analyses. Further effort will also need to be invested
 into making the graph construction process easy to use. 
 
 Many questions may be answered by skillful SQL queries over university
-data sets. But these approaches often fall short when questions are
+datasets. But these approaches often fall short when questions are
 not yet clearly defined, and relatively large amounts of data need to
 be shaped and reshaped to discover patterns. As postsecondary
 education is increasingly held accountable for performance, a deep
