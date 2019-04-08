@@ -1,0 +1,65 @@
+\subsection{Student Stakeholders}
+\label{sec:student-stakeholders}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\columnwidth]{Figs/final-modularity-history.pdf}
+    \includegraphics[width=0.44\columnwidth]{Figs/final-modularity-ee.pdf}
+    \caption{A comparison between the student behavioral patterns in two departments---History (left) and Electrical Engineering (right)---from the years 2012-2016. Labels in the small circles are course names, such as ``\textsc{ee41}'' and ``\textsc{history198}''.}
+    \label{fig:modularity}
+\end{figure}
+
+We next highlight two particular use cases. First, our visual modeling
+of course sequences allows a student to identify which majors require
+students to take courses from within primarily a certain department,
+and which allow for more academic exploration across departments. We
+can report this result both visually, by directly looking at the
+intra-department orange arrows in a graph, and by calculating, the
+{\em modularity} of certain departments. Modularity is another example
+of how {\em Via}'s choice of graphs as building blocks enables the
+application of well known mathematical tools. The metric represents
+the connectivity of clusters within a graph, by calculating the
+over-representation of edges among groups of nodes.
+
+In Figure~\ref{fig:modularity}, we compare the interconnectivity of
+the History, and Electric Engineering majors, limited to course
+enrollments of one academic year apart.  Here we see that the
+visualizations align with the modularity scores associated with
+History (0.003) and Electrical Engineering (0.028). The higher the
+modularity score the more a department is intra-connected. This effect
+is caused by highly prescriptive requirement structures.
+
+As a second use case, we illustrate how \textit{Via} can be leveraged
+to discover the ''try-me'' courses. Departments offer such service courses for students
+majoring in unrelated fields, but who are interested in exploring other
+areas of study. {\em Via} enables quick discovery of such courses.
+
+We find the ``try-me'' courses by creating a {\em Via} graph over
+students of a single major. We then identify the most popular courses
+within this generated graph that are not in that major. For instance,
+by filtering on the History major, we observe that of the History
+majors, nearly 28\% take \textsc{cs105} and 21\% take
+\textsc{cs106a}. These trends are visualized through variations in
+node coloration in Figure~\ref{fig:history-try-me}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\columnwidth]{Figs/final-history-try-me.pdf}
+    \caption{A visualization of the most popular courses in the Computer Science department for History majors.}
+    \label{fig:history-try-me}
+\end{figure}
+
+ Babad et al. have discovered that the primary reasons students decide
+ to enroll in a particular course are the learning value of the class
+ followed closely by the lecture style \cite{Babad2003}. Particularly
+ difficult courses are avoided by students unless otherwise
+ required. Our assessment of the recommended Computer Science
+ ``try-me'' courses for History majors corroborates these
+ results. Although \textsc{cs106a} is branded as the most enrolled
+ introductory Computer Science course at the university from which we
+ have acquired our dataset, \textsc{cs105} additionally presents
+ itself as the Computer Science course for non-majors, and it is also
+ known among students as less rigorous. Our \textit{Via} toolkit is
+ thus able to offer a more personalized course discovery system for
+ students of a particular major.
+ 

@@ -43,20 +43,14 @@ Graph approaches have been applied to a wide variety of other tasks, such as det
 
 %We explain how the availability of additional data, such as demographic information greatly adds to the results that can be achieved.
 
-In our first approximation here, we convert transcript information describing course enrollments at our case school to directed graphs, with nodes modeling courses, links modeling sequential enrollments, and link weights modeling conditional probabilities of enrolling in a particular course before another one. We partition the graphs by the departments to which each course is officially associated by the university registrar. An existing graphing tool \cite{shannon2003cytoscape} exposes more or less information, depending on chosen zoom levels.
-
-%While the concept is easy to explain, details arise that are not
-%immediately obvious. In addition, the most informative mapping from
-%enrollments to graphs depends on the questions the graph is intended
-%to answer. Resulting mappings can vary widely.
-
-After related work and a brief introduction to our dataset, Section~\ref{sec:methodology} introduces how we construct the node and
-edge relationships in the {\em Via} network. Section~\ref{sec:visualization} then demonstrates the visual component of the model.  Section~\ref{sec:analysis} highlights diverse use-cases of our model to address questions of different academic stakeholders: students, instructors, and administrators. This final section demonstrates the wider applicability of our model, by comparing our results against well-studied phenomena in education research.
-
 %\textit{Via} is a tool that enables education researchers to gain insights into how students structure their course decisions. One particularly useful feature of the model for this purpose is the ability to filter by the year a student enrolled in a particular course. This enables us to compare the dynamics of student course decisions across different years.
 
 %has argued that the effect of growing introductory computer science courses has resulted largely as a result of the growing monetary returns that computer science fields offer. Educators fear, however, that the attraction to fields in computer and information science, however, may siphon away students interested in the humanities. Using our graph visualization of academic data we will illustrate that while we can observe an increase in the interest of student enrolling in computer science fields, a number of these courses also serve as popular courses that non-CS majors try out for fun. 
 
+
+After related work we introduce {\em Via}, and examples of its
+application.  We then explain the underlying computations that make
+the visualizations possible.
 
 %After related work, and a brief introduction to our dataset,
 %Section~\ref{sec:visualization} introduces {\it Via}'s visual
