@@ -1,0 +1,103 @@
+{\bf De facto Prerequisites:} Consider the common scenario in
+university settings where a first-year undergraduate finds an upper
+level course with few to no prerequisites listed. In the following
+example the course is POLISCI~114D, {\em Democracy, Development, and
+  the Rule of Law}. Its student composition skews heavily towards
+third- and fourth- year undergraduates, and graduate students. The
+student wishes to find a course that will prepare her for this upper
+level offering.
+
+We seed the PageRank algorithm with the four courses that the student
+has already taken. We set POLISCI~114D to be the target of all random
+walks (enrollments).
+
+\begin{figure}
+    \centering
+    \noindent\fbox{%
+    \parbox{\columnwidth}{%
+        \textbf{POLISCI~131L: Modern Political Thought: Machiavelli to Marx and Mill}
+        This course offers an introduction to the history of Western political thought from the late fifteenth through the nineteenth centuries. We will consider the development of ideas like individual rights, government by consent, and the protection of private property. We will also explore the ways in which these ideas continue to animate contemporary political debates. Thinkers covered will include: Niccolò Machiavelli, Thomas Hobbes, John Locke, Jean-Jacques Rousseau, Edmund Burke, John Stuart Mill, and Karl Marx.
+        }%
+    }
+    \noindent\fbox{%
+    \parbox{\columnwidth}{\textbf{POLISCI~114D: Democracy,
+        Development, and the Rule of Law} This course explores the
+      different dimensions of development---economic, social, and
+      political---as well as the way that modern institutions (the
+      state, rule of law, and democratic accountability) developed and
+      interacted with other factors across different societies around
+      the world.  } }
+    \caption{Descriptions of the top intermediary course candidate,
+      POLISCI~131L, and the target course, POLISCI~114D.}
+    \label{fig:pr-course-descriptions}
+\end{figure}
+
+We then iterate through the course catalog: at each iteration, we take
+one course as the candidate for best preparatory course. We append it
+to the initial four-class seed, 'pretending' the student had taken
+this course. We then run PageRank from the augmented seed set, and
+note the PageRank score of the target course. Upon loop termination,
+we select as good candidates the top $k$ courses that led to the
+highest target course PageRank.  See
+Figure~\ref{fig:course-recommendation-algorithm} for a pseudo-code
+implementation of the algorithm for $k=1$.
+
+In this example, the top candidate course discovered by our algorithm
+is POLISCI~131L, {\em Modern Political Thought: Machiavelli to Marx
+  and Mill}. The catalog excerpts in Figure
+\ref{fig:pr-course-descriptions} confirm that this course is a good
+choice. Unlike the target course, 71\% of students take the course in
+their first two years. This example shows how PageRank reaches beyond
+analysis derived solely from enrollment data queries.
+
+%% We can immediately see a relationship between the two
+%% courses in their official catalog descriptions (full texts found in
+%% Figure \ref{fig:pr-course-descriptions}): the candidate course focuses
+%% on foundational concepts such as ``individual rights, government by
+%% consent, and the protection of private property,'' and the target
+%% course focuses on ``the way that modern institutions (the state, rule
+%% of law, and democratic accountability) developed and interacted with
+%% other factors across different societies around the world.''
+
+\lstset{language=Python}          % Set your language (you can change the language for each code-block optionally)
+
+\begin{figure}
+    \begin{lstlisting}[frame=single] 
+let max_score = 0
+let best_course = None 
+
+let initial_classes = [ 'POLISCI1',
+                        'STATS60',
+                        'POLISCI102',
+                        'POLISCI103']
+                        
+let target_class = 'POLISCI114D'
+
+for course in courses:
+    if course is in initial_classes:
+        continue
+    else:
+        initial_classes.append(course)
+        score = page_rank(initial_classes
+                          target_class)
+        if score > max_score:
+            max_score = score
+            best_course = course
+        
+        initial_classes.remove(course)
+
+return (max_score, best_course)
+\end{lstlisting}
+\caption{Pseudo-code implementation of a course candidate search algorithm based on PageRank scores.}
+\label{fig:course-recommendation-algorithm}
+\end{figure}
+
+The algorithm features several tunable parameters. For example, a
+student can weigh their seed set such that some courses have higher
+influence over the final decision than others. A student who may have
+recently switched majors may want their queries to skew more heavily
+towards their new major. In these cases, a student may decide to weigh
+their most recent courses more heavily than others. Students can also
+constrain the candidate course set to courses they have already
+researched, as opposed to performing a search over the entire course
+catalog.

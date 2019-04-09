@@ -5,7 +5,7 @@
 % copyright statement.
 
 % Copyright
-\CopyrightYear{2016}
+\CopyrightYear{2019}
 %\setcopyright{acmcopyright}
 \setcopyright{acmlicensed}
 %\setcopyright{rightsretained}
@@ -61,6 +61,7 @@
 
 \usepackage{bbm}
 \usepackage{nameref}
+\usepackage{listings}
 
 % Some optional stuff you might like/need.
 \usepackage{microtype}        % Improved Tracking and Kerning
@@ -106,6 +107,10 @@
 \setlength{\paperheight}{\pprh}
 \setlength{\pdfpagewidth}{\pprw}
 \setlength{\pdfpageheight}{\pprh}
+
+% Andreas
+\setlength{\textfloatsep}{10pt}
+\newcommand{\secref}[1]{{\em\nameref{#1}}}
 
 % Make sure hyperref comes last of your loaded packages, to give it a
 % fighting chance of not being over-written, since its job is to
@@ -181,15 +186,15 @@ findings complement prior research on higher education.
 \input{introduction.tex}
 \input{relwork.tex}
 \input{applicationSectionsIntro.tex}
-\input{applications.tex}
 \input{studentStakeholders.tex}
 \input{instructorStakeholders.tex}
-\input{flexibilityPageRank.tex}
 \input{methodology.tex}
-\input{adminStakeholders.tex}
+%% \input{adminStakeholders.tex}
+\input{advancedApps.tex}
+\input{flexibilityPageRank.tex}
+\input{personalizedOverview.tex}
+\input{deFactoPrereqs.tex}
 \input{conclusion.tex}
-
-\input{personalizedOverview}
 
 % BALANCE COLUMNS
 \balance{}

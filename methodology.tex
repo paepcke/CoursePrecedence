@@ -1,4 +1,3 @@
-Data preprocessing involved the parsing of the requisite information made available through the dataset; for each student, all courses are paired with their terms of enrollment. In order to preserve the normal, sequential nature of courses across academic years, we omit the Summer Period from all experiments. 
 \section{Methodology}
 \label{sec:methodology}
 
@@ -17,20 +16,27 @@ Our first challenge is to build an expressive, yet interpretable model
 of course-to-course interactions that results in the graph based
 representation of academic pathways. The representation must support
 the desired ability to discover student enrollment patterns over time
-and enrollment interactions between departments. 
+and enrollment interactions between departments.
 
 Towards this end, we compile student-to-course enrollment information
 into what we will call a course-to-course projection model, a network
 that represents courses as nodes and course relationships as weighted
-edges. Figure~\ref{fig:simple} illustrates the process. We begin with
-a matrix $M$ representing student enrollment in courses over
-time. Indeed, we can interpret this matrix $M$ as the adjacency matrix
-of a bipartite, labeled graph documenting the interaction of student
-nodes with course nodes.  We end with a matrix $P$ that defines a
-projection of the courses in $M$, where edge weights signify how
-strongly two courses are linked. This projection can be visualized as a network such as the one found in Figure~\ref{fig:overview}, which maps all course interactions in a way that describes the aggregate behavior of student enrollment patterns.
+edges. 
 
-Combined with an existing graph manipulation kit---in our case
+Figure~\ref{fig:simple} illustrates the process. We begin with a
+matrix $M$ representing student enrollment in courses over time. We
+can interpret this matrix $M$ as the adjacency matrix of a bipartite,
+labeled graph documenting the interaction of student nodes with course
+nodes.  We end with a matrix $P$ that defines a projection of the
+courses in $M$, where edge weights signify how strongly two courses
+are linked. This projection can be visualized as a network such as the
+one found in Figure~\ref{fig:overview}, which maps all course
+interactions in a way that describes the aggregate behavior of student
+enrollment patterns. In order to preserve the normal, sequential
+nature of courses across academic years, we omit the Summer Period
+from all experiments.
+
+Combined with an existing graph manipulation kit---in our case Cytoscape
 \cite{shannon2003cytoscape}---the graph described by $P$ serves as our
 target toolkit for university stakeholders. We now show how we endow
 the construction process of $P$ with flexibility that can tune the
@@ -136,5 +142,5 @@ emergence of cycles.
 In the following section we describe how we combine the projection
 matrix with an existing graph visualization tool. For simplicity we
 choose the timestep delta function $d$ to be discrete, although we
-will alter the nature of the function for different examples.
+can alter the nature of the function for different examples.
 

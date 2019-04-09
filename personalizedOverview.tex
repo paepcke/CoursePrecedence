@@ -1,70 +1,71 @@
-\subsection{Candidate Course Discovery}
-One of the primary use-cases of our model is in predicting prerequisites for courses which have no explicitly listed required classes. By modeling the interactions between courses as a graph, we can leverage the {\em PageRank} algorithm devised by Page \textit{et al.} for this task \cite{Page1999}. Generally, PageRank is an algorithm that measures the relative importance between nodes in a graph by conducting random walks through a network. For our particular task, PageRank as applied to our graph enables us to determine which classes a student is most likely to take given a set of initial seed set of courses that they have already completed.
+\subsection{Course Discovery}
+An important use case of our model is predicting prerequisites for
+courses which have no explicitly listed required classes. Because {\em
+  Via} models the interactions between courses as a graph, we can
+leverage the {\em PageRank} algorithm for this task
+\cite{Page1999}. PageRank is an algorithm that measures the relative
+importance between nodes in a graph by conducting random walks through
+a network.
 
-Using this approach, we now demonstrate two concrete examples of how the PageRank algorithms grants us non-obvious insights into implicit prerequisite relationships that exist between courses. 
+The algorithm is best known for its application in Web search. In the
+curriculum domain PageRank models many generations of students moving
+through courses. The model provides probabilities about courses
+students with a given course history will take later on in their
+careers; it illuminates student pathways based on past student
+behavior. The random walk in this context is an imaginary new student
+who is enrolled in a {\em seed course}. From there the student
+randomly enrolls in successor courses, guided by the probabilities in
+the projection matrix, until the student reaches a pre-determined
+target course $C$.
 
-For the first example, let us image a student who hopes to take CS229, a course that covers a broad introduction to Machine Learning methods offered by the Computer Science department in the School of Engineering. In order to take this class, students are requirements to have an understanding of matrix calculus and linear algebra. The two introductory mathematics courses offered to first-year undergraduates are CME100 and MATH51. Among these two courses, CME100 is branded as an introductory mathematics course with an engineering-focus. That is to say, CME100 is ostensibly the introductory math course to take if interested in any field within the vast domain of engineering. Math51 is offered as the more general introductory math course, often taken by students from outside of the School of Engineering. From the official course catalog descriptions, taking CME100 over MATH51 seems like the obvious choice for a student seeking to take CS229.
+Importantly, PageRank goes beyond counting enrollments---the course
+node incidence of links into $C$. The algorithm mirrors the
+probability that a student arrives at $C$ from other courses, which
+might be topically distant. The algorithm thus takes into account path
+lengths, not just the immediate enrollment history prior to $C$.
 
-However, these initial impressions are not validated when running Personalized PageRank on our constructed graph. By running PageRank twice, once with MATH51 set as the seed course and once with CME100, we find that a student is more likely to complete CS229 after completing MATH51. This indicates, contrary to our initial impression, that a stronger sequential relationship exists between MATH51 and CS229 than between CME100 and CS229. When making decisions about which courses to take, students can benefit from these additional quantitative insights to supplement the information that simple course descriptions provide.
+We demonstrate two examples of how the PageRank algorithm grants us
+insights into implicit prerequisite relationships that exist between
+courses.
 
-One could argue that, while interesting, an analysis such as the aforementioned can in some ways be replicated through a process that deals in raw enrollment counts across students and courses. In other words, one could use pure enrollment data to show that MATH51 and CS229 have a higher joint enrollment count that CME100 and CS229. We argue, however, that using raw enrollment data to make these sorts of analyses is not only inaccessible to the vast majority of university stakeholders, but also increasingly difficult as queries become more and more complex. Consider the case in which we are conditioning on more than one course --- say a student's entire course history. The intersection of students with this precise set of courses is small, perhaps too small to derive any meaningful statistical analysis of future behavior. PageRank, in its use of random walks, gives us a simple, yet efficient method of approximating common student behaviors given a set of courses already taken.
+{\bf Which math alternative to choose:} For the first example, let us
+image a student who hopes to take CS229, a course that covers a broad
+introduction to Machine Learning methods.  The course is offered by
+the Computer Science department in the School of Engineering.
 
-We demonstrate a more complex use case for PageRank. Here, we present a common scenario in the university setting --- a first-year undergraduate student finds an upper-level course with few to no prerequisites listed. She is interested in enrolling in something that will prepare her well for the course, with the hope of eventually taking said course in some subsequent academic year. 
+In order to take this class, students are required to understand
+matrix calculus and linear algebra. The two introductory mathematics
+courses offered to first-year undergraduates are CME100 and
+MATH51. Among these two courses, CME100 is offered by the School of
+Engineering, and is branded as an introductory mathematics course with
+an engineering focus. Based on the course catalog alone CME100 is thus
+ostensibly the introductory math course to take if interested in
+engineering. Math51 is offered as the more general introductory math
+course, often taken by students from outside the School of
+Engineering. Taking CME100 over MATH51 seems like the obvious choice
+for a student seeking to take CS229. Yet, aggregated student behavior
+suggests otherwise.
 
-Concretely, we seed the Personalized PageRank algorithm with four courses typically taken by a first-year Political Science undergraduate. We then set POLISCI114D, titled Democracy, Development, and the Rule of Law, to be our target course --- an upper-level political science course with a class composition that skews heavily towards third- (17\%) and fourth- (27\%) year undergraduate students and graduate students (25\%).
+Running PageRank twice, once with MATH51 set as the seed course and
+once with CME100, we find that a student is more likely to complete
+CS229 after completing MATH51. This result indicates, contrary to our
+initial impression, that a stronger sequential relationship exists
+between MATH51 and CS229 than between CME100 and CS229. When making
+decisions about which courses to take, students can benefit from these
+additional quantitative insights to supplement the information that
+simple course descriptions provide.
 
-\begin{figure}
-    \centering
-    \noindent\fbox{%
-    \parbox{\columnwidth}{%
-        \textbf{POLISCI 131L: Modern Political Thought: Machiavelli to Marx and Mill (ETHICSOC 131S)}
-        This course offers an introduction to the history of Western political thought from the late fifteenth through the nineteenth centuries. We will consider the development of ideas like individual rights, government by consent, and the protection of private property. We will also explore the ways in which these ideas continue to animate contemporary political debates. Thinkers covered will include: Niccolò Machiavelli, Thomas Hobbes, John Locke, Jean-Jacques Rousseau, Edmund Burke, John Stuart Mill, and Karl Marx.
-        }%
-    }
-    \noindent\fbox{%
-    \parbox{\columnwidth}{%
-        \textbf{POLISCI 114D: Democracy, Development, and the Rule of Law (INTLPOL 230, INTNLREL 114D, POLISCI 314D)}
-        (Formerly IPS 230) This course explores the different dimensions of development - economic, social, and political - as well as the way that modern institutions (the state, rule of law, and democratic accountability) developed and interacted with other factors across different societies around the world.
-        }%
-    }
-    \caption{The descriptions of the top intermediary course candidate, POLISCI131L, and the target course, POLISCI 114D.}
-    \label{fig:pr-course-descriptions}
-\end{figure}
+One could argue that such an analysis can be replicated with a simple
+database queries over enrollment data to show that MATH51 and CS229
+have a higher joint enrollment count than CME100 and CS229. However,
+when analyses are even mildly more complex, this approach grows
+intractable.
 
-We can then iterate through the course catalog: at each iteration, we would take some hypothetical course, append it to the initial four-class seed, run PageRank from the seed set, then note the PageRank score of our target course. Upon loop termination, we can then select the top $k$ hypothetical courses that led to the highest target course PageRank score as good candidates (See Figure \ref{fig:course-recommendation-algorithm} for a pseudo-code implementation of the aforementioned). We make the claim that this candidate set are likely to be good options for any student interested in taking the target course given that they've already taken the courses in the seed set described above. In the example given, the top candidate course discovered by our algorithm is POLISCI131L, titled Modern Political Thought: Machiavelli to Marx and Mill. We can immediately see a relationship between the two courses in their official catalog descriptions (full texts found in Figure \ref{fig:pr-course-descriptions}): the candidate course focuses on foundational concepts such as ``individual rights, government by consent, and the protection of private property,'' and the target course focuses on ``the way that modern institutions (the state, rule of law, and democratic accountability) developed and interacted with other factors across different societies around the world.'' However, unlike the target course, 71\% of students in the course in their first two years of their undergraduate careers. This is a simple example indicative of the utility of PageRank beyond that of analysis derived solely from enrollment data.
+Consider the case in which we are conditioning on more than
+one course---say a student's entire course history. The intersection
+of students with this precise set of courses is small, perhaps too
+small to derive any meaningful statistical analysis of future
+behavior. PageRank, in its use of random walks, gives us a simple, yet
+efficient method of approximating common student behaviors given a set
+of courses already taken. The following illustrates this point.
 
-\lstset{language=Python}          % Set your language (you can change the language for each code-block optionally)
-
-\begin{figure}
-    \begin{lstlisting}[frame=single] 
-let max_score = 0
-let best_course = None 
-
-let initial_classes = [ 'POLISCI1',
-                        'STATS60',
-                        'POLISCI102',
-                        'POLISCI103']
-                        
-let target_class = 'POLISCI114D'
-
-for course in courses:
-    if course is in initial_classes:
-        continue
-    else:
-        initial_classes.append(course)
-        score = page_rank(initial_classes
-                          target_class)
-        if score > max_score:
-            max_score = score
-            best_course = course
-        
-        initial_classes.remove(course)
-
-return (max_score, best_course)
-\end{lstlisting}
-\caption{Pseudo-code implementation of a course candidate search algorithm based on PageRank scores.}
-\label{fig:course-recommendation-algorithm}
-\end{figure}
-
-
-There are several tune-able parameters to the algorithm described above that allow students to customize the types of queries made. For example, a student can weigh their seed set such that more courses have higher influence over the final decision than others. For example, a student who may have recently switched majors may want their queries to skew more heavily towards their new major --- in these cases, a student may decide to weigh their most recent courses more heavily than others. Students can also constrain the hypothetical course set to some courses they have already researched, as opposed to doing a search over the entire course catalog.

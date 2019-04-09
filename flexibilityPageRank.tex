@@ -4,39 +4,21 @@
 We begin by showing how {\em Via} recovers high-level, university-wide
 trends that have been independently observed in the literature.
 
-We first determine the overall {\em flexibility} of departments and
-their programs during varying historic time periods. High flexibility
-means high ability of students in majors outside the program to
-include the program's courses in their curriculum. Flexibility also
-reflects how thoroughly a program constrains students along particular
-paths.
-
-The analysis employs the {\em PageRank} algorithm \cite{Page1999}. The
-algorithm is best known for its application in Web search result
-ranking. However, one of the algorithm's implementation methods
-illustrates how PageRank is also applicable to course flexibility
-analysis.
-
-Importantly, PageRank goes beyond counting enrollments---the course
-node incidence of links. The algorithm takes into account the
-probability that a student arrives at a particular course $C$ from
-some other course, which might be topically distant. Envision a
-student being placed into a random course, and then enrolling along
-high probability links. The flexibility of $C$ reflects the ease with
-which such students arrive at $C$ from other courses. Aggregating this
-computation over all courses of a program produces the program's
-overall flexibility, the ability for students to sample many courses
-in the program.
+We determine the overall {\em flexibility} of departments and their
+programs during varying historic time periods. High flexibility means
+high ability of students in majors outside the program to include the
+program's courses in their curriculum. The measure is thus
+complementary to the requirements analysis of
+Section~\secref{sec:student-stakeholders} (Figure~\ref{fig:modularity}).
 
 To compute department flexibility for our specific university over
-time we used {\em Via} to create separate graphs for generations of
-students, and their orientation towards engineering versus humanities
-and social sciences.
+time we use {\em Via} to create separate graphs for generations of
+students, separated by their orientation towards engineering, versus
+the humanities and social sciences.
 
-We use raw counts of consecutive course enrollments from
-term to term in order to define edge weights between courses. The
-PageRank execution then turns those raw counts into transition
-probabilities.
+We use raw counts of consecutive course enrollments from term to term
+to define edge weights between courses. The PageRank execution then
+turns those raw counts into transition probabilities.
 
 \begin{figure}
     \centering
@@ -55,39 +37,38 @@ $D$ with PageRank score $X$, starting at a random course, and
 selecting successors according to successor probability will land
 students in $D$ $(X * 100)$\% of the time. Thus, the percentages in
 Figure~\ref{fig:evolution} signal the ease with which a department's
-courses are found from the other courses in the graph.
+courses are available without following a prescribed path.
 
 More generally, we can interpret the relative size of the departments
 in Figure~\ref{fig:evolution} as the flexibility of departments across
 the different disciplines at the university throughout any time period
-in an undergraduate's career. This quantity has an inverse
-relationship with the activation energy required to begin taking
-courses in a given department.
+in an undergraduate's career.
+%% This quantity has an inverse
+%% relationship with the activation energy required to begin taking
+%% courses in a given department.
 
-In this case a department's high PageRank score would indicate a
-relative ease of entering and taking a course within a particular
-department. While closely linked, this ease differs from metrics
-regarding course composition and university enrollment due to the
-emphasis on the flow of students from course to course. For example,
-we see that missing from the 2010-2018 undergraduate results is the
-mathematics department, despite it ranking 4th in raw number of
-enrollments during the given timeframe. This is likely because
-students become much less likely to enroll in math courses after
-fulfilling the requirement (commonly during their freshman year),
-whereas many students enroll in many of the popular courses in the CS,
-ECON, and ME departments throughout their undergraduate career,
-perhaps because these subjects are less dependent on knowledge
-acquired---or not acquired---during the final years of high school.
+%% In this case a department's high PageRank score would indicate a
+%% relative ease of entering and taking a course within a particular
+%% department.
+While closely linked, flexibility differs from metrics of student
+composition and enrollments. For example, we see that missing from the
+2010-2018 undergraduate results is the mathematics department, despite
+it ranking 4th in raw number of enrollments during the given
+timeframe. This is likely because students become much less likely to
+enroll in math courses after fulfilling the requirement (commonly
+during their freshman year), whereas many students enroll in many of
+the popular courses in the CS, ECON, and ME departments throughout
+their undergraduate career, perhaps because these subjects are less
+dependent on knowledge acquired---or not acquired---during the final
+years of high school.
 
 We observe that between 2000 and 2018, the PageRank score of the
 Computer Science department has increased. This observation applies in
 general to all degree-seeking students and to the BA-seeking
-students. In Section~\nameref{sec:student-stakeholders} we will show
-how we can use {\em Via} to further understand details of this CS
-slice.
+students.
 
-Another point to note is a general decrease in enrollment in economics
-courses, but a noticeable uptick in the amount of classes taken in
+Another point to note is a general decrease in accessing economics
+courses, but a noticeable uptick in the number of classes taken in
 Management Sciences and Engineering (MS\&E). These two trends are
 strongly correlated, as the material of MS\&E seeks to combine
 economics and finance with computer science and statistics.

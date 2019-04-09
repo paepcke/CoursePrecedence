@@ -2,30 +2,31 @@
 \label{sec:viaIntro}
 
 We now introduce the minimum of underlying computation that is needed
-to understand {\em Via} graphs. Details follow in later sections.
+to understand {\em Via} graphs. Details follow in
+Section~\secref{sec:methodology}
 
-We use from a large US private research university. This dataset
-contains the anonymized enrollment data of over 52,000 students who
-were enrolled at the university during any time between Fall 2000 and
-Fall 2018. Each of the roughly two million rows in this table consists
-of a unique student identifier, a course in which they enrolled, and
-the academic term for which they enrolled in the class. Our dataset
-also contains supplementary information, such as each student's major
-during time of enrollment in a course and each student's major upon
-graduation.
+We use student data from a large US private research university. This
+dataset contains the anonymized enrollment data of over 52,000
+students who were enrolled at the university during any time between
+Fall 2000 and Fall 2018. Each of the roughly two million rows in this
+table consists of a unique student identifier, a course in which they
+enrolled, and the academic term for which they enrolled in the
+class. Our dataset also contains supplementary information, such as
+each student's major during time of enrollment in a course and each
+student's major upon graduation.
 
 Depending on the class of problems of interest, we filter along these
 additional values. Similar filters could be used with {\em Via} over
 demographic data that are available to university administrators. We
-did not have such data available, but hope that our examples below are
-clear enough to suggest such significant additional potential for {\em
-  Via} to inform gender, first generation, minority or other student
+did not have such data available, but hope that our examples below
+suggest the significant additional potential for {\em Via} to inform
+understanding of gender, first generation, minority or other student
 subgroup behaviors.
 
 {\em Via} converts this course enrollment data to directed graphs.
 Nodes represent courses, directed links represent sequential
 enrollment in the courses at the link endpoints. Link weights model
-conditional probabilities of enrolling in the link destination course
+conditional probabilities of enrolling in the link destination course,
 given prior enrollment in the course at the link origin. Link weights
 are visualized as line thickness.
 
@@ -40,11 +41,10 @@ are associated.
       courses offered by one department.}
     \label{fig:overview}
 \end{figure}
-
 Tool users can zoom, and select particular courses or
 departments. The selections can then be extracted as a separate
 graph. These interactions are implemented by \textit{Cytoscape}, which
-we use as the engine behind {\em Via}.
+we use as the engine behind {\em Via} \cite{shannon2003cytoscape}.
 
 Cytoscape was developed to model biological systems and interactions
 between cellular organisms. Yet the tool is well suited for
@@ -85,5 +85,6 @@ Beyond visualizations {\em Via} provides a second, more formal avenue
 for analysis. As the tool's principle visual element is a graph, many
 graph related mathematical approaches are available. These include
 variations of centrality and betweenness, clustering, Page Rank, and
-others. Applications below will exemplify the use of some such
-methods.
+others. Applications in the following section will exemplify the use
+of the visual methods. Section~\secref{sec:advanced} will add
+applications that use graph computations.

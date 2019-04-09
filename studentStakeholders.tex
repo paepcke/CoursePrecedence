@@ -1,3 +1,8 @@
+\section{Visual Applications}
+\label{sec:analysis}
+The following examples illustrate how {\em Via} can help student,
+instructor, and administrator stakeholders make sense of student data.
+
 \subsection{Student Stakeholders}
 \label{sec:student-stakeholders}
 
@@ -9,36 +14,37 @@
     \label{fig:modularity}
 \end{figure}
 
-We next highlight two particular use cases. First, our visual modeling
-of course sequences allows a student to identify which majors require
-students to take courses from within primarily a certain department,
-and which allow for more academic exploration across departments. We
-can report this result both visually, by directly looking at the
-intra-department orange arrows in a graph, and by calculating, the
-{\em modularity} of certain departments. Modularity is another example
-of how {\em Via}'s choice of graphs as building blocks enables the
-application of well known mathematical tools. The metric represents
-the connectivity of clusters within a graph, by calculating the
-over-representation of edges among groups of nodes.
+Departments differ by the degree to which requirements keep students
+within the department. A department with fewer formal
+intra-departmental requirements allows students to more easily sample
+other areas of interest. Gaining an overview of such differences among
+many departments is tedious. Prior student pathways tell the story
+more directly.
 
-In Figure~\ref{fig:modularity}, we compare the interconnectivity of
-the History, and Electric Engineering majors, limited to course
-enrollments of one academic year apart.  Here we see that the
-visualizations align with the modularity scores associated with
-History (0.003) and Electrical Engineering (0.028). The higher the
-modularity score the more a department is intra-connected. This effect
-is caused by highly prescriptive requirement structures.
+In Figure~\ref{fig:modularity} we compare the interconnectivity of
+the History and Electric Engineering majors, limited to course
+enrollments of one academic year apart. The Electrical Engineering
+department clearly has students take numerous internal courses as
+indicated by the many orange links. History, in contrast, has students
+take more outside courses. (Those outlinks are excluded from the
+Figure.)
+
+Note that this intra-cluster connectivity is equivalent to the graph
+computational {\em modularity}. This metric represents the connectivity
+of clusters within a graph, by calculating the over-representation of
+edges among groups of nodes.
 
 As a second use case, we illustrate how \textit{Via} can be leveraged
-to discover the ''try-me'' courses. Departments offer such service courses for students
-majoring in unrelated fields, but who are interested in exploring other
-areas of study. {\em Via} enables quick discovery of such courses.
+to discover ''try-me'' courses. Departments offer such service courses
+for students majoring in unrelated fields, but who are interested in
+exploring other areas of study. {\em Via} enables quick discovery of
+such courses.
 
 We find the ``try-me'' courses by creating a {\em Via} graph over
 students of a single major. We then identify the most popular courses
 within this generated graph that are not in that major. For instance,
 by filtering on the History major, we observe that of the History
-majors, nearly 28\% take \textsc{cs105} and 21\% take
+majors, nearly 28\% take \textsc{cs105}, and 21\% take
 \textsc{cs106a}. These trends are visualized through variations in
 node coloration in Figure~\ref{fig:history-try-me}.
 
