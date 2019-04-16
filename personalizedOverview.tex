@@ -3,15 +3,13 @@ An important use case of our model is predicting prerequisites for
 courses which have no explicitly listed required classes. Because {\em
   Via} models the interactions between courses as a graph, we can
 leverage the {\em PageRank} algorithm for this task
-\cite{Page1999}. PageRank is an algorithm that measures the relative
-importance between nodes in a graph by conducting random walks through
-a network.
+\cite{Page1999}. PageRank measures the relative importance between nodes in a graph by conducting random walks through a network.
 
 The algorithm is best known for its application in Web search. In the
-curriculum domain PageRank models many generations of students moving
-through courses. The model provides probabilities about courses
-students with a given course history will take later on in their
-careers; it illuminates student pathways based on past student
+curriculum domain, PageRank models many generations of students moving
+through courses. The model provides probabilities of courses that
+students with a given course history will take subsequently in their
+college careers: it illuminates pathways based on prior
 behavior. The random walk in this context is an imaginary new student
 who is enrolled in a {\em seed course}. From there the student
 randomly enrolls in successor courses, guided by the probabilities in
@@ -28,44 +26,26 @@ We demonstrate two examples of how the PageRank algorithm grants us
 insights into implicit prerequisite relationships that exist between
 courses.
 
-{\bf Which math alternative to choose:} For the first example, let us
-image a student who hopes to take CS229, a course that covers a broad
-introduction to Machine Learning methods.  The course is offered by
+{\bf Which math alternative to choose:} For the first example, let us imagine a student who hopes to take \textsc{cs229}, a course that covers a broad introduction to Machine Learning methods.  The course is offered by
 the Computer Science department in the School of Engineering.
 
 In order to take this class, students are required to understand
 matrix calculus and linear algebra. The two introductory mathematics
-courses offered to first-year undergraduates are CME100 and
-MATH51. Among these two courses, CME100 is offered by the School of
-Engineering, and is branded as an introductory mathematics course with
-an engineering focus. Based on the course catalog alone CME100 is thus
-ostensibly the introductory math course to take if interested in
-engineering. Math51 is offered as the more general introductory math
-course, often taken by students from outside the School of
-Engineering. Taking CME100 over MATH51 seems like the obvious choice
-for a student seeking to take CS229. Yet, aggregated student behavior
-suggests otherwise.
+courses offered to first-year undergraduates are \textsc{cme100} and
+\textsc{math51}. Among these two courses, \textsc{cme100} is offered by the School of Engineering, and is branded as an introductory mathematics course with an engineering focus. Based on the course catalog alone, \textsc{cme100} is ostensibly the introductory math course to take if one is interested in engineering. \textsc{math51} is offered as the more general introductory math course, often taken by students from outside the School of Engineering. Taking \textsc{cme100} over \textsc{math51} seems like the obvious choice for a student seeking to take \textsc{cs229}. 
 
-Running PageRank twice, once with MATH51 set as the seed course and
-once with CME100, we find that a student is more likely to complete
-CS229 after completing MATH51. This result indicates, contrary to our
-initial impression, that a stronger sequential relationship exists
-between MATH51 and CS229 than between CME100 and CS229. When making
-decisions about which courses to take, students can benefit from these
-additional quantitative insights to supplement the information that
-simple course descriptions provide.
+Yet aggregated data on student behavior suggests otherwise. Running PageRank twice, once with the seed course set as \textsc{math51} and once with \textsc{cme100}, we find that a student is more likely to complete
+\textsc{cs229} after completing \textsc{math51}. Contrary to our premonition, this result indicates a stronger sequential relationship
+between \textsc{math51} and \textsc{cs229} than between \textsc{cme100} and \textsc{cs229}. We suspect that students, instructors, and administrators all might benefit from illuminations of this sort.
 
-One could argue that such an analysis can be replicated with a simple
-database queries over enrollment data to show that MATH51 and CS229
-have a higher joint enrollment count than CME100 and CS229. However,
-when analyses are even mildly more complex, this approach grows
-intractable.
+One might argue that such insights could be gleaned from simple
+database queries over enrollment data to show that \textsc{math51} and \textsc{cs229} have a higher joint enrollment count than \textsc{cme100} and \textsc{cs229}. When analyses are even mildly more complex than that, however, the approach becomes intractable.
 
 Consider the case in which we are conditioning on more than
 one course---say a student's entire course history. The intersection
 of students with this precise set of courses is small, perhaps too
 small to derive any meaningful statistical analysis of future
-behavior. PageRank, in its use of random walks, gives us a simple, yet
+behavior. In its use of random walks, PageRank gives us a simple, yet
 efficient method of approximating common student behaviors given a set
 of courses already taken. The following illustrates this point.
 

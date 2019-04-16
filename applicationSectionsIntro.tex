@@ -1,7 +1,7 @@
 \section{Introducing \em{Via}}
 \label{sec:viaIntro}
 
-We now introduce the minimum of underlying computation that is needed
+Here we introduce the minimum of underlying computation that is needed
 to understand {\em Via} graphs. Details follow in
 Section~\secref{sec:methodology}
 
@@ -10,8 +10,8 @@ dataset contains the anonymized enrollment data of over 52,000
 students who were enrolled at the university during any time between
 Fall 2000 and Fall 2018. Each of the roughly two million rows in this
 table consists of a unique student identifier, a course in which they
-enrolled, and the academic term for which they enrolled in the
-class. Our dataset also contains supplementary information, such as
+enrolled, and the academic term during which they enrolled in the
+class. The dataset also contains supplementary information, including
 each student's major during time of enrollment in a course and each
 student's major upon graduation.
 
@@ -20,10 +20,9 @@ additional values. Similar filters could be used with {\em Via} over
 demographic data that are available to university administrators. We
 did not have such data available, but hope that our examples below
 suggest the significant additional potential for {\em Via} to inform
-understanding of gender, first generation, minority or other student
-subgroup behaviors.
+understanding of gender, first-generation, ethno-racial minority status or other relevant subgroup characteristics.
 
-{\em Via} converts this course enrollment data to directed graphs.
+{\em Via} converts course enrollment data to directed graphs.
 Nodes represent courses, directed links represent sequential
 enrollment in the courses at the link endpoints. Link weights model
 conditional probabilities of enrolling in the link destination course,
@@ -41,7 +40,7 @@ are associated.
       courses offered by one department.}
     \label{fig:overview}
 \end{figure}
-Tool users can zoom, and select particular courses or
+Tool users can zoom to select particular courses or
 departments. The selections can then be extracted as a separate
 graph. These interactions are implemented by \textit{Cytoscape}, which
 we use as the engine behind {\em Via} \cite{shannon2003cytoscape}.
@@ -82,7 +81,7 @@ easily construct such overviews that distinguish between, for example,
 gender or minority status.
 
 Beyond visualizations {\em Via} provides a second, more formal avenue
-for analysis. As the tool's principle visual element is a graph, many
+for analysis. Because the tool's principle visual element is a graph, many
 graph related mathematical approaches are available. These include
 variations of centrality and betweenness, clustering, Page Rank, and
 others. Applications in the following section will exemplify the use

@@ -22,6 +22,14 @@ turns those raw counts into transition probabilities.
 
 \begin{figure}
     \centering
+    \includegraphics[width=\columnwidth]{Figs/final-enrollment-vs-pagerank.png}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+
+\begin{figure}
+    \centering
     \includegraphics[width=\columnwidth]{Figs/final-evolution.pdf}
     \caption{A comparison over time of PageRank values by department
       in both the entire undergraduate network (top row) and the
@@ -43,6 +51,8 @@ More generally, we can interpret the relative size of the departments
 in Figure~\ref{fig:evolution} as the flexibility of departments across
 the different disciplines at the university throughout any time period
 in an undergraduate's career.
+
+
 %% This quantity has an inverse
 %% relationship with the activation energy required to begin taking
 %% courses in a given department.
@@ -72,5 +82,8 @@ courses, but a noticeable uptick in the number of classes taken in
 Management Sciences and Engineering (MS\&E). These two trends are
 strongly correlated, as the material of MS\&E seeks to combine
 economics and finance with computer science and statistics.
+
+
+
 
 Our results are in harmony with observations made by education researchers. Over the past 20 years the proportion of students majoring in STEM, and particularly computer science has varied greatly \cite{ComputingResearchAssociation2017}. Introductory, mid-level and upper-level computer science courses have all shown a demonstrable increase upwards of 150\% of student enrollment between 2000 and 2017. Driving student's decisions to enroll in more technical courses is primarily the greater monetary compensation that these majors promise at the workplace \cite{Downey2007}. Interestingly, however, while the total amount of classes taken within Computer Science has risen noticeably, we do not observe that the total amount of student majors in Computer Science has increased at the same rate. Rather between 2000 and 2010 the number of Computer Science majors showed an uptick of 33\%. However, between 2010 and 2018 the percent increase of Computer Science majors drops to 5.8\%. This finding is more generally in line with the observed trend that the Computer Science major has not experienced a constant exponential increase in popularity. Rather, 2005 was one of the years with the lowest rates of students who self-reported interest in majoring in Computer Science when entering college \cite{Patterson2005}. Between 2000 and 2008 it was, in fact, economics and business-related courses that remained one of the most popular majors of study nation wide \cite{NationalCenterforEducation2018}. Overall, our quantitative analysis is able to corroborate much of the education research regarding course enrollment patterns over the past 20 years. We stress that the methodology used to generate these results is not dependent on the source of data, but is rather facilitated by the graphical modeling of student course enrollments that \textit{Via} enables. In addition, the incorporation of filtering mechanisms beyond time, such as student demographics, would allow for more fine grained understanding of course accessibility based on enrollment data alone.
