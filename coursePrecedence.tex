@@ -112,6 +112,23 @@
 \setlength{\textfloatsep}{10pt}
 \newcommand{\secref}[1]{{\em\nameref{#1}}}
 
+\newcommand{\squishlist}{
+  \begin{list}{$\bullet$}
+    {
+      \setlength{\itemsep}{0pt}
+      \setlength{\parsep}{3pt}
+      \setlength{\topsep}{3pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1.5em}
+      \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em}
+    }
+}
+
+\newcommand{\squishend}{
+  \end{list}
+}
+
 % Make sure hyperref comes last of your loaded packages, to give it a
 % fighting chance of not being over-written, since its job is to
 % redefine many LaTeX commands.
@@ -189,6 +206,7 @@ exploration. We explain the procedures required to project enrollment records on
 % \input{flexibilityPageRank.tex}
 \input{personalizedOverview.tex}
 \input{defactoPrereqs.tex}
+\input{rolx.tex}
 \input{conclusion.tex}
 
 % BALANCE COLUMNS
