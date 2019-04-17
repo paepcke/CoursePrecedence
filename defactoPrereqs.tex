@@ -1,26 +1,26 @@
 {\bf De facto Prerequisites:} Consider the common scenario in
 which a first-year undergraduate finds an upper
 level course with few or no listed prerequisites. In the following
-example the course is \textsc{polisci114d}, {\em Democracy, Development, and
+example the course is \textsc{polisci1d}, {\em Democracy, Development, and
   the Rule of Law}. Its student composition skews heavily towards
 third- and fourth- year undergraduates and graduate students. The
 student wishes to find a course that will prepare her for this upper
 level offering.
 
 We seed the PageRank algorithm with the four courses that the student
-has already taken. We set \textsc{polisci114d} to be the target of all random
+has already taken. We set \textsc{polisci1d} to be the target of all random
 walks (enrollments).
 
 \begin{figure}
     \centering
     \noindent\fbox{%
     \parbox{\columnwidth}{%
-        \textbf{POLISCI~131L: Modern Political Thought: Machiavelli to Marx and Mill}
+        \textbf{POLISCI~1L: Modern Political Thought: Machiavelli to Marx and Mill}
         This course offers an introduction to the history of Western political thought from the late fifteenth through the nineteenth centuries. We will consider the development of ideas like individual rights, government by consent, and the protection of private property. We will also explore the ways in which these ideas continue to animate contemporary political debates. Thinkers covered will include: Niccolò Machiavelli, Thomas Hobbes, John Locke, Jean-Jacques Rousseau, Edmund Burke, John Stuart Mill, and Karl Marx.
         }%
     }
     \noindent\fbox{%
-    \parbox{\columnwidth}{\textbf{POLISCI~114D: Democracy,
+    \parbox{\columnwidth}{\textbf{POLISCI~1D: Democracy,
         Development, and the Rule of Law} This course explores the
       different dimensions of development---economic, social, and
       political---as well as the way that modern institutions (the
@@ -28,7 +28,7 @@ walks (enrollments).
       interacted with other factors across different societies around
       the world.  } }
     \caption{Descriptions of the top intermediary course candidate,
-      POLISCI~131L, and the target course, POLISCI~114D.}
+      POLISCI~1L, and the target course, POLISCI~1D.}
     \label{fig:pr-course-descriptions}
 \end{figure}
 
@@ -43,7 +43,7 @@ Figure~\ref{fig:course-recommendation-algorithm} for a pseudo-code
 implementation of the algorithm for $k=1$.
 
 In this example, the top candidate course discovered by our algorithm
-is \textsc{polisci131l}, {\em Modern Political Thought: Machiavelli to Marx
+is \textsc{polisci1l}, {\em Modern Political Thought: Machiavelli to Marx
   and Mill}. The catalog excerpts in Figure
 \ref{fig:pr-course-descriptions} confirm that this course is a good
 choice. Unlike the target course, 71\% of students take the course in
@@ -67,11 +67,11 @@ let max_score = 0
 let best_course = None 
 
 let initial_classes = [ 'POLISCI1',
-                        'STATS60',
-                        'POLISCI102',
-                        'POLISCI103']
+                        'STATS1',
+                        'POLISCI2',
+                        'POLISCI3']
                         
-let target_class = 'POLISCI114D'
+let target_class = 'POLISCI1D'
 
 for course in courses:
     if course is in initial_classes:

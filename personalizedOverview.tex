@@ -26,20 +26,20 @@ We demonstrate two examples of how the PageRank algorithm grants us
 insights into implicit prerequisite relationships that exist between
 courses.
 
-{\bf Which math alternative to choose:} For the first example, let us imagine a student who hopes to take \textsc{cs229}, a course that covers a broad introduction to Machine Learning methods.  The course is offered by
+{\bf Which math alternative to choose:} For the first example, let us imagine a student who hopes to take \textsc{cs200}, a course that covers a broad introduction to Machine Learning methods.  The course is offered by
 the Computer Science department in the School of Engineering.
 
 In order to take this class, students are required to understand
 matrix calculus and linear algebra. The two introductory mathematics
-courses offered to first-year undergraduates are \textsc{cme100} and
-\textsc{math51}. Among these two courses, \textsc{cme100} is offered by the School of Engineering, and is branded as an introductory mathematics course with an engineering focus. Based on the course catalog alone, \textsc{cme100} is ostensibly the introductory math course to take if one is interested in engineering. \textsc{math51} is offered as the more general introductory math course, often taken by students from outside the School of Engineering. Taking \textsc{cme100} over \textsc{math51} seems like the obvious choice for a student seeking to take \textsc{cs229}. 
+courses offered to first-year undergraduates are \textsc{engr1} and
+\textsc{math1}. Among these two courses, \textsc{engr1} is offered by the School of Engineering, and is branded as an introductory mathematics course with an engineering focus. Based on the course catalog alone, \textsc{engr1} is ostensibly the introductory math course to take if one is interested in engineering. \textsc{math1} is offered as the more general introductory math course, often taken by students from outside the School of Engineering. Taking \textsc{engr1} over \textsc{math1} would seem to be a reasonable choice for a student seeking to take \textsc{cs200}. 
 
-Yet aggregated data on student behavior suggests otherwise. Running PageRank twice, once with the seed course set as \textsc{math51} and once with \textsc{cme100}, we find that a student is more likely to complete
-\textsc{cs229} after completing \textsc{math51}. Contrary to our premonition, this result indicates a stronger sequential relationship
-between \textsc{math51} and \textsc{cs229} than between \textsc{cme100} and \textsc{cs229}. We suspect that students, instructors, and administrators all might benefit from illuminations of this sort.
+Yet aggregated data on student behavior suggests otherwise. Running PageRank twice, once with the seed course set as \textsc{math1} and once with \textsc{engr1}, we find that a student is more likely to complete
+\textsc{cs200} after completing \textsc{math1}. Contrary to our premonition, this result indicates a stronger sequential relationship
+between \textsc{math1} and \textsc{cs200} than between \textsc{engr1} and \textsc{cs200}. We suspect that students, instructors, and administrators all might benefit from illuminations of this sort.
 
 One might argue that such insights could be gleaned from simple
-database queries over enrollment data to show that \textsc{math51} and \textsc{cs229} have a higher joint enrollment count than \textsc{cme100} and \textsc{cs229}. When analyses are even mildly more complex than that, however, the approach becomes intractable.
+database queries over enrollment data to show that \textsc{math1} and \textsc{cs200} have a higher joint enrollment count than \textsc{engr1} and \textsc{cs200}. When analyses are even mildly more complex than that, however, the approach becomes intractable.
 
 Consider the case in which we are conditioning on more than
 one course---say a student's entire course history. The intersection
