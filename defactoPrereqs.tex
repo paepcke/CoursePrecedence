@@ -34,7 +34,7 @@ walks (enrollments).
 
 We then iterate through the course catalog: at each iteration, we take
 one course as the candidate for best preparatory course. We append it
-to the initial four-class seed, 'pretending' the student had taken
+to the initial four-class seed, `pretending' the student had taken
 this course. We then run PageRank from the augmented seed set, and
 note the PageRank score of the target course. Upon loop termination,
 we select as good candidates the top $k$ courses that led to the
@@ -62,16 +62,16 @@ analyses derived solely from enrollment data queries.
 \lstset{language=Python}          % Set your language (you can change the language for each code-block optionally)
 
 \begin{figure}
-    \begin{lstlisting}[frame=single] 
+    \begin{verbatim}
 let max_score = 0
 let best_course = None 
 
-let initial_classes = [ 'POLISCI1',
-                        'STATS1',
-                        'POLISCI2',
-                        'POLISCI3']
+let initial_classes = [ `POLISCI1',
+                        `STATS1',
+                        `POLISCI2',
+                        `POLISCI3']
                         
-let target_class = 'POLISCI1D'
+let target_class = `POLISCI1D'
 
 for course in courses:
     if course is in initial_classes:
@@ -87,7 +87,8 @@ for course in courses:
         initial_classes.remove(course)
 
 return (max_score, best_course)
-\end{lstlisting}
+
+\end{verbatim}
 \caption{Pseudo-code implementation of a course candidate search algorithm based on PageRank scores.}
 \label{fig:course-recommendation-algorithm}
 \end{figure}
